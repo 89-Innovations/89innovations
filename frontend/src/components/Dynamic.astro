@@ -12,14 +12,8 @@ const { dynamicPageSection } = Astro.props;
         return (
           <ServiceAreas link={block.link} block={block} city={block.city} />
         );
-      case 'layout.service':
-        return (
-          <Services
-            title={block.title}
-            subtitle={block.subtitle}
-            services={block.services}
-          />
-        );
+      case 'layout.service-info':
+        return <Services {block} />;
 
       default:
         console.warn(`Unknown component type: ${block.__component}`);

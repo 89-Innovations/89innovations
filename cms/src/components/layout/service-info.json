@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_layout_service_infos",
+  "info": {
+    "displayName": "Service Info"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "card": {
+      "displayName": "Info Card",
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.info-card"
+    }
+  }
+}

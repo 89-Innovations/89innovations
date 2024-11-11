@@ -11,13 +11,14 @@ export default (config, { strapi }) => {
       },
       dynamicPageSection: {
         on: {
-          'layout.service': {
+          'layout.service-info': {
             populate: {
-              services: {
+              card: {
                 populate: {
-                  image: {
+                  icon: {
                     fields: ['url', 'alternativeText'],
                   },
+                  link: true,
                 },
               },
             },

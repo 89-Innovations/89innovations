@@ -6,7 +6,7 @@ export const sizes = {
 
 export const styles = {
   primary:
-    'sm:inline-block text-center w-full block font-semibold relative py-2 px-5 uppercase rounded border-2 border-border cursor-pointer transition-shadow duration-300 ease-in-out shadow-[5px_5px_0_0] shadow-border text-sm lg:text-base bg-accent text-white hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed',
+    'sm:inline-block text-center w-full block font-semibold relative py-2 px-5 uppercase rounded border-2 border-border cursor-pointer transition-shadow duration-300 ease-in-out shadow-[5px_5px_0_0] shadow-border text-sm lg:text-base bg-accent text-primary hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed',
   secondary:
     'sm:inline-block text-center w-full block font-semibold relative py-2 px-5 uppercase rounded border-2 border-border cursor-pointer transition-shadow duration-300 ease-in-out shadow-[5px_5px_0_0] shadow-border text-sm lg:text-base bg-white text-primary hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed',
   plain:

@@ -172,6 +172,19 @@ export interface LayoutHero extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutInfoCard extends Struct.ComponentSchema {
+  collectionName: 'components_layout_info_cards';
+  info: {
+    displayName: 'Info Card';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    icon: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    link: Schema.Attribute.Component<'ui.link', false>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface LayoutService extends Struct.ComponentSchema {
   collectionName: 'components_layout_services';
   info: {
@@ -205,6 +218,19 @@ export interface LayoutServiceAreas extends Struct.ComponentSchema {
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Areas we service'>;
+  };
+}
+
+export interface LayoutServiceInfo extends Struct.ComponentSchema {
+  collectionName: 'components_layout_service_infos';
+  info: {
+    displayName: 'Service Info';
+  };
+  attributes: {
+    card: Schema.Attribute.Component<'layout.info-card', true>;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -356,8 +382,10 @@ declare module '@strapi/strapi' {
       'layout.contact': LayoutContact;
       'layout.cta': LayoutCta;
       'layout.hero': LayoutHero;
+      'layout.info-card': LayoutInfoCard;
       'layout.service': LayoutService;
       'layout.service-areas': LayoutServiceAreas;
+      'layout.service-info': LayoutServiceInfo;
       'layout.showcase': LayoutShowcase;
       'layout.testimonial': LayoutTestimonial;
       'ui.button': UiButton;

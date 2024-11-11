@@ -563,7 +563,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<'description'>;
     dynamicPageSection: Schema.Attribute.DynamicZone<
-      ['layout.service-areas', 'layout.service']
+      ['layout.service-areas', 'layout.service-info']
     >;
     hero: Schema.Attribute.Component<'layout.hero', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
