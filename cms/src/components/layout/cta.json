@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_layout_ctas",
+  "info": {
+    "displayName": "CTA",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Contact",
+      "required": true
+    },
+    "subHeading": {
+      "type": "text",
+      "required": false,
+      "default": "Have a project in mind? Let's talk about it. We are here to help you with your construction needs. "
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.link",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_brand_company_infos",
+  "info": {
+    "displayName": "CompanyInfo",
+    "icon": "command",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "logo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "brand.logo"
+    },
+    "socialMedia": {
+      "type": "component",
+      "repeatable": true,
+      "component": "brand.social"
+    },
+    "companyName": {
+      "type": "string",
+      "required": true
+    },
+    "foundingDate": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "twitterHandle": {
+      "type": "string",
+      "default": "@twitter"
+    },
+    "address": {
+      "displayName": "address",
+      "type": "component",
+      "repeatable": false,
+      "component": "brand.address"
+    }
+  }
+}

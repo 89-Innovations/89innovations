@@ -1,0 +1,55 @@
+---
+import { formatDate } from '@/utils/formatDate';
+import OptimizedImage from './OptimizedImage.astro';
+import { getReadingTime } from '@/utils/readingTime';
+
+const { post, index } = Astro.props;
+const minutesRead = getReadingTime(post.content);
+const { title, publishedAt, author, image, category, description } = post;
+const date = formatDate(publishedAt);
+const href = `/blog/${post.slug}`;
+---
+
+<li>
+  <a href={href}>
+    <div
+      class='relative rounded border-2 border-border cursor-pointer transition-shadow duration-300 ease-in-out shadow-[5px_5px_0_0] shadow-border bg-white text-primary hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed'
+    >
+      <OptimizedImage
+        src={image.url}
+        alt={image.alternativeText || ''}
+        width={300}
+        height={150}
+        loading={index <= 2 ? 'eager' : 'lazy'}
+        decoding={index <= 2 ? 'sync' : 'async'}
+        class='rounded-t object-contain w-full'
+      />
+
+      <div class='p-2'>
+        <span
+          class='text-accent uppercase tracking-widest text-sm font-semibold'
+        >
+          {category}
+        </span>
+
+        <h2
+          class='text-primary font-heading text-2xl font-semibold tracking-tight mt-1'
+        >
+          {title}
+        </h2>
+
+        {minutesRead && <span class='text-primary text-sm'>{minutesRead}</span>}
+        <div class='flex gap-2 mt-1 text-xs text-slate-500'>
+          <span>
+            {author.fullName}
+          </span>
+          <span>•</span>
+          <time datetime={date}>
+            {date}
+          </time>
+        </div>
+        <p class='text-primary mt-1'>{description}</p>
+      </div>
+    </div></a
+  >
+</li>

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_layout_abouts",
+  "info": {
+    "displayName": "About",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "about": {
+      "type": "richtext"
+    },
+    "title": {
+      "type": "string",
+      "default": "title",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "subtitle",
+      "required": true
+    }
+  }
+}

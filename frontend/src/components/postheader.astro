@@ -1,0 +1,35 @@
+---
+const { title, author, publishedAt, category, minutesRead } = Astro.props;
+import { formatDate } from '@/utils/formatDate';
+
+const date = formatDate(publishedAt);
+---
+
+<header class='mx-auto max-w-screen-lg mt-4 mb-16'>
+  <span class='text-accent uppercase tracking-widest text-sm font-semibold'>
+    {category}
+  </span>
+  <h1
+    class='text-4xl lg:text-5xl font-bold tracking-tight mt-1 text-primary font-heading uppercase'
+  >
+    {title}
+  </h1>
+  <span class='text-primary'>{minutesRead}</span>
+  <div class='flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap'>
+    <span class='text-primary'>
+      {author.fullName ?? 'John Doe'}
+    </span>
+    <span class='text-primary'>•</span>
+    <time class='text-primary' datetime={date}>
+      {date}
+    </time>
+    <!-- <span class='text-primary hidden md:block'>•</span>
+    <div class='w-full md:w-auto flex flex-wrap gap-3'>
+      {
+        tags.map((tag: string) => (
+          <span class='text-sm text-accent'>#{tag}</span>
+        ))
+      }
+    </div> -->
+  </div>
+</header>

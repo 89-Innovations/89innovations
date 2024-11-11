@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "child_links",
+  "info": {
+    "singularName": "child-link",
+    "pluralName": "child-links",
+    "displayName": "ChildLink"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "path": {
+      "type": "string",
+      "default": "/",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_ui_nav_bars",
+  "info": {
+    "displayName": "NavBar",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "navItems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::nav-item.nav-item"
+    },
+    "ctaLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.link",
+      "required": true
+    }
+  }
+}

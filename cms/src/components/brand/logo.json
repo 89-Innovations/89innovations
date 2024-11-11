@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_brand_logos",
+  "info": {
+    "displayName": "Logo",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "string",
+      "default": "/"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

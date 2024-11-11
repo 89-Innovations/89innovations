@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_ui_links",
+  "info": {
+    "displayName": "link",
+    "icon": "link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "href": {
+      "type": "string",
+      "required": true,
+      "default": "/contact-us"
+    },
+    "isExternal": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "md",
+        "lg"
+      ],
+      "default": "lg"
+    },
+    "block": {
+      "type": "boolean",
+      "default": true
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "plain",
+        "animated"
+      ],
+      "default": "plain"
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "link text"
+    }
+  }
+}

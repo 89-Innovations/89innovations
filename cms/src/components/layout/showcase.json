@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_layout_showcases",
+  "info": {
+    "displayName": "Showcase",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

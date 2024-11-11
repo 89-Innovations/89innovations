@@ -1,0 +1,109 @@
+---
+// Get the page data from Strapi and pass it into the component
+import About from '@/components/About.astro';
+import Contact from '@/components/Contact.astro';
+import Cta from '@/components/cta.astro';
+import Showcase from '@/components/react/Showcase';
+import Testimonials from '@/components/react/Testimonials';
+import Services from '@/components/Services.astro';
+import Link from '@/components/ui/link.astro';
+import Container from '@/layouts/Container.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
+import { fetchStrapiData } from '@/queries/strapiQueries';
+
+const data = await fetchStrapiData('/global');
+
+// Generate dynamic paths from Strapi slugs
+export const getStaticPaths = async () => {
+  const pages = await fetchStrapiData('/pages');
+
+  return pages.map((page: { slug: string }) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+};
+
+interface Props {
+  page: {
+    dynamicPageSection: any;
+    title: string;
+    description: string;
+    pageTitle: string;
+    subtitle: string;
+    slug?: string;
+  };
+}
+
+const { page } = Astro.props;
+---
+
+<!-- Render your page content -->
+<PageLayout
+  title={`89 | ${page.title}`}
+  description={page.description}
+  pageTitle={page.pageTitle}
+  subtitle={page.subtitle}
+>
+  {
+    page.dynamicPageSection.map((block: any) => {
+      switch (block.__component) {
+        case 'ui.link':
+          return (
+            <div class='text-lg flex items-center align-middle sm:justify-center'>
+              <Link href={block.href} style={block.style}>
+                {block.label}
+              </Link>
+            </div>
+          );
+        case 'layout.about':
+          return (
+            <Container>
+              <About about={block.about} image={block.image} />
+            </Container>
+          );
+        case 'layout.cta':
+          return (
+            <Cta
+              heading={block.heading}
+              subHeading={block.subHeading}
+              link={block.link}
+            />
+          );
+        case 'layout.contact':
+          return (
+            <Contact
+              subHeading={block.subHeading}
+              subject={block.subject}
+              button={block.button}
+              company={data.company}
+            />
+          );
+        case 'layout.testimonial':
+          return (
+            <Container>
+              <Testimonials
+                client:load
+                testimonials={block.testimonial}
+                numberOfColumns={block.numberOfColumns}
+              />
+            </Container>
+          );
+        case 'layout.showcase':
+          return <Showcase client:load images={block.images} />;
+        case 'layout.service':
+          return (
+            <Services
+              services={block.services}
+              title={block.title}
+              subtitle={block.subtitle}
+              slug={page.slug ?? ''}
+            />
+          );
+
+        default:
+          console.warn(`Unknown component type: ${block.__component}`);
+          return null;
+      }
+    })
+  }
+</PageLayout>

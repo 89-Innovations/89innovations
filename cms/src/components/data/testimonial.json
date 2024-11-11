@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_data_testimonials",
+  "info": {
+    "displayName": "testimonial"
+  },
+  "options": {},
+  "attributes": {
+    "isFeatured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "review": {
+      "type": "text"
+    }
+  }
+}

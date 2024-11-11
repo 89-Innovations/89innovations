@@ -1,0 +1,40 @@
+---
+import Sectionhead from '@/components/sectionhead.astro';
+import BackgroundStyle from '@/components/ui/background-style.astro';
+import type { CollectionEntry } from 'astro:content';
+import Container from './Container.astro';
+import MainLayout from './MainLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: { src: string; alt: string };
+  frontmatter?: CollectionEntry<'articles'>;
+  robots?: boolean;
+  subtitle: string;
+  pageTitle: string;
+  whiteBG?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  frontmatter,
+  robots,
+  subtitle = 'Subtitle',
+  pageTitle = 'Page Title',
+} = Astro.props;
+---
+
+<MainLayout {title} {description} {image} {frontmatter} {robots}>
+  <BackgroundStyle>
+    <Container>
+      <Sectionhead>
+        <Fragment slot='subtitle'>{subtitle}</Fragment>
+        <Fragment slot='title'>{pageTitle}</Fragment>
+      </Sectionhead>
+    </Container>
+    <slot />
+  </BackgroundStyle>
+</MainLayout>

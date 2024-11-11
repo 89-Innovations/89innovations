@@ -1,0 +1,21 @@
+---
+import type { Logo } from '@/interfaces';
+import OptimizedImage from './OptimizedImage.astro';
+
+interface Props {
+  logo: Logo;
+}
+
+const { logo }: Props = Astro.props;
+const { url, alternativeText: alt } = logo.image;
+---
+
+<a href={logo.href}>
+  <OptimizedImage
+    src={url}
+    alt={alt}
+    loading='eager'
+    width={100}
+    height={150}
+  />
+</a>

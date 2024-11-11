@@ -1,0 +1,23 @@
+---
+import Link from './link.astro';
+
+const { prevUrl, nextUrl } = Astro.props;
+---
+
+<nav class='flex max-w-96 space-x-8 mx-auto' aria-label='Blog pages'>
+  {
+    prevUrl && (
+      <Link href={prevUrl} rel='prev' style='secondary'>
+        &larr; Prev
+      </Link>
+    )
+  }
+
+  {
+    nextUrl && (
+      <Link href={nextUrl} rel='next' style='secondary'>
+        Next&nbsp;&rarr;
+      </Link>
+    )
+  }
+</nav>

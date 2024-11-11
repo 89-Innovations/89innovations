@@ -1,0 +1,45 @@
+---
+import { getStrapiMedia } from '@/utils/strapi';
+import { Image } from 'astro:assets';
+
+const {
+  src,
+  alt = 'Image',
+  width = 800,
+  height = 450,
+  format = 'webp',
+  quality = 75,
+  loading = 'lazy',
+  decoding = 'async',
+  ...props
+} = Astro.props;
+
+const widths = [400, 800, 1200, 1600];
+
+const srcSet = widths
+  .map(
+    (w) =>
+      `${getStrapiMedia(src)?.replace('/upload/', `/upload/w_${w},q_${quality},f_${format}/`)} ${w}w`
+  )
+  .join(', ');
+
+const optimizedSrc =
+  getStrapiMedia(src)?.replace(
+    '/upload/',
+    `/upload/w_${width},h_${height},q_${quality},f_${format}/`
+  ) || '';
+---
+
+<Image
+  src={optimizedSrc}
+  srcset={srcSet}
+  sizes='(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw'
+  alt={alt}
+  width={width}
+  height={height}
+  format={format}
+  quality={quality}
+  loading={loading}
+  decoding={decoding}
+  {...props}
+/>

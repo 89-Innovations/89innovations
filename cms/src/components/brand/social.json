@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_brand_socials",
+  "info": {
+    "displayName": "social",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "Facebook",
+        "Instagram",
+        "X",
+        "Linkedin",
+        "Github",
+        "Youtube"
+      ],
+      "required": true,
+      "default": "Facebook"
+    }
+  }
+}

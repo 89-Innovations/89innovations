@@ -1,0 +1,29 @@
+---
+import BackgroundStyle from '@/components/ui/background-style.astro';
+import type { CollectionEntry } from 'astro:content';
+import Container from './Container.astro';
+import MainLayout from './MainLayout.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  image?: { src: string; alt: string };
+  frontmatter?: CollectionEntry<'articles'>;
+  robots?: boolean;
+  whiteBG?: boolean;
+}
+
+const { id, title, description, image, frontmatter, robots } = Astro.props;
+const fm = frontmatter
+  ? { id, collection: 'articles' as const, data: frontmatter.data }
+  : undefined;
+---
+
+<MainLayout {title} {description} {image} frontmatter={fm} {robots}>
+  <BackgroundStyle>
+    <Container>
+      <slot />
+    </Container>
+  </BackgroundStyle>
+</MainLayout>

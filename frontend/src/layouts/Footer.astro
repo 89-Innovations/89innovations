@@ -1,0 +1,99 @@
+---
+import FooterIcons from '@/components/ui/footer-icons.astro';
+import Container from './Container.astro';
+
+interface FooterSection {
+  title: string;
+  links: {
+    title: string;
+    path: string;
+    children?: {
+      title?: string;
+      path?: string;
+    }[];
+  }[];
+}
+
+const { footer, socialMedia, companyName, address } = Astro.props;
+---
+
+<footer
+  class='bg-footer-background text-accent'
+  aria-labelledby='footer-heading'
+>
+  <Container>
+    <h2 id='footer-heading' class='sr-only'>Footer</h2>
+
+    <div class='xl:grid xl:grid-cols-1 xl:gap-8'>
+      <div
+        class='mt-16 md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-4 xl:col-span-2 xl:mt-0'
+      >
+        <!-- Existing Link Columns -->
+        {
+          footer.section.map((section: FooterSection) => (
+            <div>
+              <h3 class='font-heading text-xl text-footer-text mb-2'>
+                {section.title}
+              </h3>
+              <ul role='list' class='mb-6'>
+                {section.links.map((link) => (
+                  <li class='pt-2'>
+                    {link.children && link.children.length > 0 ? (
+                      <ul>
+                        {link.children.map((childLink) => (
+                          <li class='pt-2'>
+                            <a
+                              href={childLink.path}
+                              class='lg:text-base transition-all text-footer-text hover:text-accent'
+                            >
+                              {childLink.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <a
+                        href={link.path}
+                        class='lg:text-base transition-all text-footer-text hover:text-accent'
+                      >
+                        {link.title}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+
+        <!-- New Column for Social Media and Address -->
+        <div>
+          <h3 class='font-heading text-xl text-footer-text mb-2'>
+            Connect with Us
+          </h3>
+          <!-- Social Media Icons -->
+          <div class='mb-6'>
+            <FooterIcons socials={socialMedia} />
+          </div>
+          <!-- Business Address -->
+          <address class='not-italic text-footer-text'>
+            <p>{address.streetAddress}</p>
+            {address.address2 && <p>{address.streetAddress2}</p>}
+            <p>
+              {address.city}, {address.province}{' '}
+              {address.postal}
+            </p>
+
+            {address.phone && <p>{address.phone}</p>}
+          </address>
+        </div>
+      </div>
+    </div>
+  </Container>
+  <Container>
+    <p class='mt-4 text-sm text-footer-text md:order-1 md:mt-0'>
+      &copy; {new Date().getFullYear()}
+      {companyName} All rights reserved.
+    </p>
+  </Container>
+</footer>

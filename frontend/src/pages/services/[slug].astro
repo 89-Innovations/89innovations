@@ -1,0 +1,85 @@
+---
+import Cta from '@/components/cta.astro';
+import OptimizedImage from '@/components/OptimizedImage.astro';
+import Link from '@/components/ui/link.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
+import { fetchStrapiData } from '@/queries/strapiQueries';
+import { Markdown } from 'astro-remote';
+
+export const getStaticPaths = async () => {
+  const pages = await fetchStrapiData('/services');
+
+  return pages.map((page: { slug: string }) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+};
+
+interface Props {
+  page: {
+    title: string;
+    slug: string;
+    summary: string;
+    description: string;
+    pageTitle: string;
+    subtitle: string;
+    image: {
+      url: string;
+      alternativeText?: string;
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      link: {
+        href: string;
+        label: string;
+        style: string;
+        isExternal: boolean;
+        block: boolean;
+        size: string;
+      };
+    };
+  };
+}
+const { page } = Astro.props;
+
+const { title, slug, summary, description, pageTitle, subtitle, image, cta } =
+  page;
+---
+
+<PageLayout
+  title={`89 | ${title}`}
+  description={summary}
+  pageTitle={pageTitle}
+  subtitle={subtitle}
+  transition:name={slug}
+>
+  <div class='overflow-hidden pb-24 pt-8 sm:py-32'>
+    <div class='mx-auto max-w-7xl px-6 lg:px-8'>
+      <div
+        class='mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2'
+      >
+        <div class='lg:pr-8 lg:pt-4'>
+          <div class='lg:max-w-lg'>
+            <article class='prose md:prose-lg prose-headings:font-heading'>
+              <Markdown content={description} />
+            </article>
+          </div>
+        </div>
+        <OptimizedImage
+          src={image.url}
+          alt={image.alternativeText || title}
+          transition:name={`service-image-${image.url}`}
+          class='mt-10 mx-auto aspect-[7/5] w-full rounded-2xl object-cover sm:mt-16 lg:mt-0 lg:max-w-none xl:row-span-2 xl:row-end-2xl:mt-36'
+        />
+      </div>
+    </div>
+  </div>
+  <div class='flex w-full mb-12 justify-center'>
+    <Link href='/services' style='plain' block={false}>
+      &LeftArrow; Back to Services
+    </Link>
+  </div>
+
+  <Cta heading={cta.title} subHeading={cta.subtitle} link={cta.link} />
+</PageLayout>

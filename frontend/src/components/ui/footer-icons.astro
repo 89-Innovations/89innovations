@@ -1,0 +1,51 @@
+---
+const { socials } = Astro.props;
+
+enum IconName {
+  Facebook = 'Facebook',
+  Instagram = 'Instagram',
+  X = 'X',
+  Linkedin = 'Linkedin',
+  Github = 'Github',
+  Youtube = 'Youtube',
+}
+
+const icons = {
+  [IconName.Facebook]: (await import('@/components/icons/facebook.astro'))
+    .default,
+  [IconName.Instagram]: (await import('@/components/icons/instagram.astro'))
+    .default,
+  [IconName.X]: (await import('@/components/icons/x.astro')).default,
+  [IconName.Linkedin]: (await import('@/components/icons/linkedin.astro'))
+    .default,
+  [IconName.Github]: (await import('@/components/icons/github.astro')).default,
+  [IconName.Youtube]: (await import('@/components/icons/youtube.astro'))
+    .default,
+};
+---
+
+<ul class='flex space-x-3 md:order-3'>
+  {
+    socials.map(
+      ({
+        link,
+        name,
+        icon,
+      }: {
+        link: string;
+        name: string;
+        icon: IconName;
+      }) => {
+        const IconComponent = icons[icon]; // Get the icon component dynamically
+        return (
+          <li class='text-footer-text hover:text-accent transition-all hover:scale-125'>
+            <a href={link} target='_blank' rel='noopener noreferrer'>
+              <IconComponent class='w-6 h-6' />
+              <span class='sr-only'>{name}</span>
+            </a>
+          </li>
+        );
+      }
+    )
+  }
+</ul>

@@ -1,0 +1,49 @@
+{
+  "collectionName": "components_ui_buttons",
+  "info": {
+    "displayName": "button",
+    "icon": "cursor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "submit",
+        "reset",
+        "button"
+      ],
+      "default": "button",
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "md",
+        "lg",
+        "link"
+      ],
+      "default": "lg",
+      "required": false
+    },
+    "block": {
+      "type": "boolean",
+      "default": true
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "plain",
+        "animated"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "required": true,
+      "default": "button text"
+    }
+  }
+}

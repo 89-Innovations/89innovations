@@ -1,0 +1,68 @@
+---
+import Blogcard from '@/components/blogcard.astro';
+import Cta from '@/components/cta.astro';
+import Pagination from '@/components/ui/pagination.astro';
+import {
+  type BlogPage,
+  type Pagination as PaginationType,
+} from '@/interfaces/blog-interface';
+import Container from '@/layouts/Container.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
+import { fetchStrapiData } from '@/queries/strapiQueries';
+import { formatBlogPosts } from '@/utils/formatBlogPosts';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+const pages = await fetchStrapiData('/pages');
+const blogPageData = pages.find(
+  (page: { slug: string }) => page.slug === 'blog'
+);
+
+export const getStaticPaths = async ({ paginate }: PaginationType) => {
+  const blogPosts = await getCollection('articles');
+  const formattedPosts: CollectionEntry<'articles'>[] = formatBlogPosts(
+    blogPosts,
+    {
+      sortByDate: true,
+    }
+  );
+  return paginate(formattedPosts, { pageSize: 9 });
+};
+const { page } = Astro.props as { page: BlogPage };
+const { title, description, pageTitle, subtitle, dynamicPageSection } =
+  blogPageData;
+---
+
+<PageLayout
+  title=`89 | ${title}`
+  description={description}
+  pageTitle={pageTitle}
+  subtitle={subtitle}
+>
+  <Container>
+    <ul class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+      {page?.data.map((post, index) => <Blogcard post={post.data} {index} />)}
+    </ul>
+  </Container>
+  <div class='mb-24 text-center mt-24 space-y-4 text-secondary'>
+    <Pagination prevUrl={page?.url.prev} nextUrl={page?.url.next} />
+    <p class='text-sm'>Page {page?.currentPage} of {page?.lastPage}</p>
+  </div>
+  {
+    dynamicPageSection.map((block: any) => {
+      switch (block.__component) {
+        case 'layout.cta':
+          return (
+            <Cta
+              heading={block.heading}
+              subHeading={block.subHeading}
+              link={block.link}
+            />
+          );
+        // Handle other components as needed
+        default:
+          console.warn(`Unknown component type: ${block.__component}`);
+          return null;
+      }
+    })
+  }
+</PageLayout>

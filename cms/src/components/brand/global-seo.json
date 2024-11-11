@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_brand_global_seos",
+  "info": {
+    "displayName": "GlobalSEO"
+  },
+  "options": {},
+  "attributes": {
+    "jsonData": {
+      "type": "json",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 65,
+      "minLength": 3
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "maxLength": 160,
+      "minLength": 3
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

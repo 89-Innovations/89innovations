@@ -1,0 +1,30 @@
+---
+import { sizes, styles } from '@/styles/buttonStyles';
+interface Props extends astroHTML.JSX.HTMLAttributes {
+  type: 'submit' | 'reset' | 'button';
+  size?: 'md' | 'lg' | 'link';
+  block?: boolean;
+  style?: 'primary' | 'secondary' | 'plain' | 'animated';
+  class?: string;
+  disabled?: boolean;
+}
+
+const {
+  type = 'button',
+  block,
+  size = 'lg',
+  style = 'plain',
+  disabled,
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<button
+  type={type}
+  disabled={disabled}
+  {...rest}
+  class:list={[block && 'w-full', sizes[size], styles[style], className]}
+>
+  <slot />
+</button>

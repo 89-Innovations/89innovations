@@ -1,0 +1,56 @@
+---
+import OptimizedImage from '@/components/OptimizedImage.astro';
+import PostHeader from '@/components/postheader.astro';
+import Button from '@/components/ui/button.astro';
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import { getReadingTime } from '@/utils/readingTime';
+import { Markdown } from 'astro-remote';
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+export const getStaticPaths = async () => {
+  const blogEntries = await getCollection('articles');
+  return blogEntries.map((post: CollectionEntry<'articles'>) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const minutesRead = getReadingTime(post.data.content) ?? '0';
+
+const { title, description, author, content, image, publishedAt } = post.data;
+---
+
+<BlogLayout
+  id={post.id}
+  {title}
+  {description}
+  frontmatter={{
+    id: post.id,
+    collection: 'articles' as const,
+    data: post.data,
+  }}
+>
+  <div class='max-w-screen-lg mx-auto'>
+    <Button
+      type='button'
+      onclick='javascript:history.back()'
+      style='plain'
+      size='link'
+    >
+      &larr; Back to blog
+    </Button>
+    <OptimizedImage
+      src={image.url}
+      alt={image.alternativeText ?? ''}
+      layout='responsive'
+      class='object-right-top object-cover w-full h-96 mt-6'
+    />
+  </div>
+  <PostHeader {title} {description} {publishedAt} {author} {minutesRead} />
+  <article
+    class='mx-auto md:prose-lg mt-6 max-w-screen-lg prose prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent transition mb-8 sm:mb-16 lg:mb-24'
+  >
+    <Markdown content={content} />
+  </article>
+</BlogLayout>

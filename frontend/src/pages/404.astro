@@ -1,0 +1,17 @@
+---
+import Link from '@/components/ui/link.astro';
+import PageLayout from '@/layouts/PageLayout.astro';
+---
+
+<PageLayout
+  title='404'
+  description='Page not found'
+  subtitle='Sorry, the page you are looking for does not exist.'
+  pageTitle='404'
+>
+  <section class='py-32 justify-center w-full flex'>
+    <Link href='/' style='secondary' block={false} class='max-w-screen-sm'
+      >Go back home</Link
+    >
+  </section>
+</PageLayout>

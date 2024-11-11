@@ -1,0 +1,48 @@
+---
+const { align = 'center', id, level = 'h1' } = Astro.props;
+const Heading = level;
+---
+
+<div
+  {id}
+  class:list={[
+    align === 'center' && 'sm:text-center',
+    align === 'left' && 'sm:text-left',
+    align === 'right' && 'sm:text-right',
+  ]}
+>
+  <p
+    class='uppercase font-bold text-accent text-opacity-100 mb-2 sm:mb-5 lg:mb-4 tracking-widest text-sm lg:text-lg xl:mb-8 xl:text-2xl fade-up opacity-0 translate-y-1/2 transition-all duration-700 ease-in-out'
+  >
+    <slot name='subtitle'>Subtitle</slot>
+  </p>
+  <Heading
+    class='font-heading text-primary uppercase font-bold text-3xl sm:text-5xl lg:text-7xl tracking-tight fade-up opacity-0 translate-y-1/2 transition-all duration-700 ease-in-out'
+  >
+    <slot name='title'>Title</slot>
+  </Heading>
+</div>
+
+<script>
+  const fadeInUp = () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-1/2');
+        }
+      });
+    });
+
+    document.querySelectorAll('.fade-up').forEach((el) => {
+      observer.observe(el);
+    });
+  };
+
+  const handlePageLoad = () => {
+    fadeInUp();
+  };
+
+  document.addEventListener('astro:page-load', handlePageLoad);
+  document.addEventListener('DOMContentLoaded', handlePageLoad);
+</script>

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nav_items",
+  "info": {
+    "singularName": "nav-item",
+    "pluralName": "nav-items",
+    "displayName": "NavItem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::child-link.child-link"
+    },
+    "path": {
+      "type": "string",
+      "required": true,
+      "default": "/"
+    }
+  }
+}

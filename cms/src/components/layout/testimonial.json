@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_layout_testimonials",
+  "info": {
+    "displayName": "Testimonial",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "testimonial": {
+      "displayName": "testimonial",
+      "type": "component",
+      "repeatable": true,
+      "component": "data.testimonial"
+    },
+    "numberOfColumns": {
+      "type": "integer",
+      "default": 4,
+      "required": true,
+      "min": 4
+    }
+  }
+}

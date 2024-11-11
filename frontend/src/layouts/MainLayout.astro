@@ -1,0 +1,38 @@
+---
+import { fetchStrapiData } from '@/queries/strapiQueries';
+import TwSizeIndicator from '@/utils/TwSizeIndicator.astro';
+import '@fontsource-variable/quicksand';
+import '@fontsource-variable/mohave';
+import type { CollectionEntry } from 'astro:content';
+import Footer from './Footer.astro';
+import Head from './Head.astro';
+import Navbar from './navbar/navbar.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: { src: string; alt: string };
+  frontmatter?: CollectionEntry<'articles'>;
+  robots?: boolean;
+}
+
+const data = await fetchStrapiData('/global');
+
+const { logo, socialMedia, companyName, address } = data?.company;
+const { navItems, ctaLink } = data?.navbar;
+const { footer } = data;
+const { title, description, image, frontmatter, robots } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en' class='scroll-smooth'>
+  <Head {title} {description} {image} {frontmatter} {robots} />
+  <body class='bg-background'>
+    <TwSizeIndicator />
+    <Navbar {navItems} {ctaLink} {logo} />
+    <main>
+      <slot />
+    </main>
+    <Footer {footer} {socialMedia} {companyName} {address} />
+  </body>
+</html>

@@ -1,0 +1,29 @@
+---
+import ServiceAreas from './ServiceAreas.astro';
+import Services from './Services.astro';
+
+const { dynamicPageSection } = Astro.props;
+---
+
+{
+  dynamicPageSection.map((block: any) => {
+    switch (block.__component) {
+      case 'layout.service-areas':
+        return (
+          <ServiceAreas link={block.link} block={block} city={block.city} />
+        );
+      case 'layout.service':
+        return (
+          <Services
+            title={block.title}
+            subtitle={block.subtitle}
+            services={block.services}
+          />
+        );
+
+      default:
+        console.warn(`Unknown component type: ${block.__component}`);
+        return null;
+    }
+  })
+}
