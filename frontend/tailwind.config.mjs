@@ -14,14 +14,14 @@ export default {
       },
       colors: {
         // body: ,
-        primary: '#1E1D20',
-        // secondary: '#1E1D20',
-        accent: '#38bdf8',
+        primary: '#001F3F',
+        secondary: '#4b5563',
+        accent: '#43b7ff',
         background: '#F6F6F6',
         border: '#000000',
         'footer-text': '#FFFFFF',
         'footer-border': '#FFFFFF',
-        'footer-background': '#1E1D20',
+        'footer-background': '#001F3F',
       },
       clipPath: {
         custom: 'polygon(0 35%, 100% 0, 100% 100%, 0 100%)',
@@ -31,9 +31,14 @@ export default {
           '0%': { opacity: 0, transform: 'translateY(20px)' },
           '100%': { opacity: 1, transform: 'translateY(0)' },
         },
+        growTriangle: {
+          '0%': { opacity: 0, transform: 'translateY(100%)' },
+          '100%': { opacity: 1, transform: 'translateY(0)' },
+        },
       },
       animation: {
         fadeInUp: 'fadeInUp 0.5s ease-out forwards',
+        growTriangle: 'growTriangle 0.5s ease-out forwards',
       },
       variants: {
         extend: {

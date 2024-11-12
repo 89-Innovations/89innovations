@@ -22,4 +22,13 @@ export interface Service {
     url: string;
     alternativeText?: string;
   };
+  icon: {
+    url: string;
+    alternativeText: string;
+  };
+  link: {
+    href: string;
+    label: string;
+  };
+  description: string;
 }

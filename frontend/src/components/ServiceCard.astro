@@ -1,33 +1,74 @@
 ---
 interface Props {
-  service: Service;
-  animationDelay?: number;
+  service: {
+    icon: {
+      url: string;
+      alternativeText: string;
+    };
+    link: {
+      href: string;
+      label: string;
+    };
+    title: string;
+    description: string;
+  };
 }
 
 const { service } = Astro.props;
-import type { Service } from '@/interfaces';
+const { icon, link, title, description } = service;
 import OptimizedImage from './OptimizedImage.astro';
+import Link from './ui/link.astro';
 ---
 
-<div
-  class='bg-white rounded-lg shadow hover:shadow-lg transition-shadow duration-300'
-  transition:name={service.title}
->
-  <a
-    href={`/services/${service.slug}`}
-    transition:name={service.slug}
-    class='block'
-  >
-    <OptimizedImage
-      src={service.image.url}
-      alt={service.image.alternativeText || service.title}
-      class='w-full h-48 object-cover rounded-t-lg'
-      transition:name={`service-image-${service.image.url}`}
-    />
+<!-- Parent div -->
+<div class='group transition-all duration-300 pt-8 relative'>
+  <a href={link.href} class='block relative'>
+    <!-- Icon container moved outside the card div -->
+    <div class='absolute -top-8 transform ml-6 z-10'>
+      <span
+        class='inline-flex transition-all duration-300 rounded-xl group-hover:bg-accent bg-primary p-3 shadow-lg'
+      >
+        <OptimizedImage
+          src={icon.url}
+          alt={icon.alternativeText || title}
+          class='h-16 w-16 object-fill'
+        />
+      </span>
+    </div>
 
-    <div class='p-4'>
-      <h3 class='text-xl font-semibold font-heading mb-2'>{service.title}</h3>
-      <p class='text-gray-600'>{service.summary}</p>
+    <!-- Card container with overflow-hidden -->
+    <div
+      class='flow-root rounded-lg group-hover:bg-primary transition-all duration-300 bg-white shadow px-6 pb-8 pt-20 relative overflow-hidden'
+    >
+      <!-- Adjusted padding-top to accommodate the icon -->
+      <h3
+        class='text-3xl uppercase font-semibold tracking-tight font-heading text-primary group-hover:text-white transition-all duration-300'
+      >
+        {title}
+      </h3>
+      <p
+        class='mt-5 text-base text-secondary group-hover:text-gray-100 transition-all duration-300'
+      >
+        {description}
+      </p>
+      <div class='mt-5'>
+        <Link
+          size='link'
+          class='group-hover:text-white hover:bg-accent p-2 hover:rounded text-xs capitalize transition-all duration-300 font-semibold'
+          href={link.href}
+        >
+          {link.label}&nbsp;&rarr;
+        </Link>
+      </div>
+
+      <!-- Triangle Div inside the card div -->
+      <div
+        class='group-hover:animate-growTriangle absolute bottom-0 right-0 w-0 h-0
+          border-l-[80px] border-l-transparent
+          border-b-[80px] border-b-accent rounded-br-lg
+          opacity-0 group-hover:opacity-100 transition-opacity duration-300 origin-bottom-right'
+      >
+      </div>
     </div>
   </a>
 </div>

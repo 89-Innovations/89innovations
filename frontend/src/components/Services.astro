@@ -1,23 +1,15 @@
 ---
 import type { Service } from '@/interfaces';
-import ServiceCard from '../components/react/ServiceCard';
-import Sectionhead from './sectionhead.astro';
-import AstroServiceCard from './ServiceCard.astro';
-import OptimizedImage from './OptimizedImage.astro';
-import Link from './ui/link.astro';
 import Container from '@/layouts/Container.astro';
+import Sectionhead from './sectionhead.astro';
+import ServiceCard from './ServiceCard.astro';
 
 interface Props {
   block: {
     title: string;
     subtitle: string;
     description: string;
-    card: {
-      services: Service[];
-      title: string;
-      subtitle: string;
-      slug?: string | undefined;
-    };
+    card: Service[];
   };
 }
 
@@ -29,47 +21,18 @@ const { title, subtitle, description, card } = block;
 ---
 
 <Container>
-  <Sectionhead level='h2'>
-    <Fragment slot='subtitle'>{subtitle}</Fragment>
-    <Fragment slot='title'>{title}</Fragment>
-  </Sectionhead>
-  <p class='max-w-screen-lg mx-auto text-center'>{description}</p>
-
+  <div class='max-w-screen-sm mx-auto'>
+    <Sectionhead level='h2'>
+      <Fragment slot='subtitle'>{subtitle}</Fragment>
+      <Fragment slot='title'>{title}</Fragment>
+    </Sectionhead>
+  </div>
+  <p class='max-w-screen-md text-secondary mt-4 mx-auto text-center'>
+    {description}
+  </p>
   <div class='my-20'>
     <div class='grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3'>
-      {
-        card.map((service, index) => (
-          <div class='group pt-8'>
-            <div class='flow-root rounded-lg group-hover:bg-accent transition-all duration-300 bg-white shadow px-6 pb-8'>
-              <div class='-mt-8'>
-                <div>
-                  <span class='inline-flex items-center justify-center transition-all duration-300 rounded-xl group-hover:bg-red-400 bg-accent p-3 shadow-lg'>
-                    <OptimizedImage
-                      src={service.icon.url}
-                      alt={service.icon.alternativeText || service.title}
-                      class='h-16 w-16 object-fill'
-                    />
-                  </span>
-                </div>
-                <h3 class='mt-8 text-2xl font-semibold tracking-tight font-heading text-primary'>
-                  {service.title}
-                </h3>
-                <p class='mt-5 text-base text-secondary'>
-                  {service.description}
-                </p>
-              </div>
-              <div class='flex justify-end mt-5'>
-                <Link
-                  class='hover:text-white underline transition-all duration-300 font-semibold'
-                  href={service.link.href}
-                >
-                  {service.link.label}&nbsp;&rarr;
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))
-      }
+      {card.map((service: Service) => <ServiceCard {service} />)}
     </div>
   </div>
 </Container>
@@ -96,6 +59,7 @@ const { title, subtitle, description, card } = block;
             </p>
           </div>
         </div>
+
       </div>
     ))
   }
