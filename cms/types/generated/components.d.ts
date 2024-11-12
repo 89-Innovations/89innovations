@@ -91,6 +91,21 @@ export interface BrandSocial extends Struct.ComponentSchema {
   };
 }
 
+export interface DataServiceIcon extends Struct.ComponentSchema {
+  collectionName: 'components_data_service_icons';
+  info: {
+    description: '';
+    displayName: 'Service Icon';
+    icon: 'alien';
+  };
+  attributes: {
+    icon: Schema.Attribute.Enumeration<
+      ['Mobile', 'Responsive', 'PageSpeed', 'Seo', 'PPC', 'Copywriting']
+    >;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface DataTestimonial extends Struct.ComponentSchema {
   collectionName: 'components_data_testimonials';
   info: {
@@ -175,11 +190,12 @@ export interface LayoutHero extends Struct.ComponentSchema {
 export interface LayoutInfoCard extends Struct.ComponentSchema {
   collectionName: 'components_layout_info_cards';
   info: {
+    description: '';
     displayName: 'Info Card';
   };
   attributes: {
     description: Schema.Attribute.Text & Schema.Attribute.Required;
-    icon: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    icon: Schema.Attribute.Component<'data.service-icon', false>;
     link: Schema.Attribute.Component<'ui.link', false>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -377,6 +393,7 @@ declare module '@strapi/strapi' {
       'brand.global-seo': BrandGlobalSeo;
       'brand.logo': BrandLogo;
       'brand.social': BrandSocial;
+      'data.service-icon': DataServiceIcon;
       'data.testimonial': DataTestimonial;
       'layout.about': LayoutAbout;
       'layout.contact': LayoutContact;

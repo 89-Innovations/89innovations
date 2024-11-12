@@ -1,7 +1,8 @@
 {
   "collectionName": "components_layout_info_cards",
   "info": {
-    "displayName": "Info Card"
+    "displayName": "Info Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,18 +14,16 @@
       "type": "text",
       "required": true
     },
-    "icon": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
-    },
     "link": {
       "type": "component",
       "repeatable": false,
       "component": "ui.link"
+    },
+    "icon": {
+      "displayName": "Service Icon",
+      "type": "component",
+      "repeatable": false,
+      "component": "data.service-icon"
     }
   }
 }

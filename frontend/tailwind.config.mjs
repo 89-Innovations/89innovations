@@ -38,7 +38,7 @@ export default {
       },
       animation: {
         fadeInUp: 'fadeInUp 0.5s ease-out forwards',
-        growTriangle: 'growTriangle 0.5s ease-out forwards',
+        growTriangle: 'growTriangle 0.3s ease-out forwards',
       },
       variants: {
         extend: {

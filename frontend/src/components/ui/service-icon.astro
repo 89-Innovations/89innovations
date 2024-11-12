@@ -1,0 +1,39 @@
+---
+const { icon, class: className } = Astro.props;
+const { icon: AstroIcon, name } = icon as {
+  icon: keyof typeof icons;
+  name: string;
+};
+
+enum IconName {
+  Mobile = 'Mobile',
+  Responsive = 'Responsive',
+  PageSpeed = 'PageSpeed',
+  Seo = 'Seo',
+  PPC = 'PPC',
+  Copywriting = 'Copywriting',
+}
+
+import MobileIcon from '@/components/icons/mobile.astro';
+import ResponsiveIcon from '@/components/icons/responsive.astro';
+import PageSpeedIcon from '@/components/icons/page-speed.astro';
+import SeoIcon from '@/components/icons/seo.astro';
+import PPCIcon from '@/components/icons/ppc.astro';
+import CopywritingIcon from '@/components/icons/copywriting.astro';
+
+const icons = {
+  [IconName.Mobile]: MobileIcon,
+  [IconName.Responsive]: ResponsiveIcon,
+  [IconName.PageSpeed]: PageSpeedIcon,
+  [IconName.Seo]: SeoIcon,
+  [IconName.PPC]: PPCIcon,
+  [IconName.Copywriting]: CopywritingIcon,
+};
+
+const IconComponent = icons[AstroIcon];
+---
+
+<div>
+  <IconComponent class:list={['sm:w-12 sm:h-12 h-8 w-8', className]} />
+  <span class='sr-only'>{name}</span>
+</div>

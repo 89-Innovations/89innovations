@@ -15,9 +15,7 @@ export default (config, { strapi }) => {
             populate: {
               card: {
                 populate: {
-                  icon: {
-                    fields: ['url', 'alternativeText'],
-                  },
+                  icon: true,
                   link: true,
                 },
               },

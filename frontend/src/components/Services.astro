@@ -15,9 +15,6 @@ interface Props {
 
 const { block } = Astro.props;
 const { title, subtitle, description, card } = block;
-// const pathname = Astro.url.pathname;
-
-// const isSlugInPath = slug ? pathname.includes(slug) : false;
 ---
 
 <Container>
@@ -27,70 +24,14 @@ const { title, subtitle, description, card } = block;
       <Fragment slot='title'>{title}</Fragment>
     </Sectionhead>
   </div>
-  <p class='max-w-screen-md text-secondary mt-4 mx-auto text-center'>
+  <p
+    class='max-w-screen-md text-secondary mt-4 mx-auto text-justify sm:text-center'
+  >
     {description}
   </p>
   <div class='my-20'>
-    <div class='grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3'>
+    <div class='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3'>
       {card.map((service: Service) => <ServiceCard {service} />)}
     </div>
   </div>
 </Container>
-
-<!-- <div className='grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3'>
-  {
-    features.map((feature) => (
-      <div key={feature.name} className='pt-6'>
-        <div className='flow-root rounded-lg bg-gray-50 px-6 pb-8'>
-          <div className='-mt-6'>
-            <div>
-              <span className='inline-flex items-center justify-center rounded-xl bg-indigo-500 p-3 shadow-lg'>
-                <feature.icon
-                  aria-hidden='true'
-                  className='h-8 w-8 text-white'
-                />
-              </span>
-            </div>
-            <h3 className='mt-8 text-lg/8 font-semibold tracking-tight text-gray-900'>
-              {feature.name}
-            </h3>
-            <p className='mt-5 text-base/7 text-gray-600'>
-              {feature.description}
-            </p>
-          </div>
-        </div>
-
-      </div>
-    ))
-  }
-</div> -->
-
-<!-- {
-  isSlugInPath ? (
-    <div class='container p-4 mx-auto my-12'>
-      <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-        {services.map((service) => (
-          <AstroServiceCard {service} />
-        ))}
-      </div>
-    </div>
-  ) : (
-    <div class='mx-auto p-4 pt-16 lg:pt-32'>
-      <Sectionhead level='h2'>
-        <Fragment slot='subtitle'>{subtitle}</Fragment>
-        <Fragment slot='title'>{title}</Fragment>
-      </Sectionhead>
-      <div class='container mx-auto my-12'>
-        <div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
-          {services.map((service, index) => (
-            <ServiceCard
-              client:visible
-              service={service}
-              animationDelay={index * 0.1}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-} -->

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_data_service_icons",
+  "info": {
+    "displayName": "Service Icon",
+    "icon": "alien",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "enumeration",
+      "enum": [
+        "Mobile",
+        "Responsive",
+        "PageSpeed",
+        "Seo",
+        "PPC",
+        "Copywriting"
+      ]
+    }
+  }
+}
