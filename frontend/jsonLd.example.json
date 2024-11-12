@@ -1,0 +1,52 @@
+{
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "<change_me>",
+    "longitude": "<change_me>"
+  },
+  "url": "<change_me>",
+  "logo": "<change_me>",
+  "name": "<change_me>",
+  "@type": "LocalBusiness",
+  "sameAs": [
+    "https://www.facebook.com/<update_me>",
+    "https://www.instagram.com/<update_me>",
+    "https://www.twitter.com/<update_me>"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "<change_me>",
+    "addressRegion": "<change_me>",
+    "streetAddress": "<change_me>",
+    "addressCountry": "<change_me>",
+    "addressLocality": "<change_me>"
+  },
+  "@context": "https://schema.org",
+  "description": "Contact us today to learn more about our services and how we can help you with your next project.",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "<change_me>",
+    "contactType": "Customer service"
+  },
+  "foundingDate": "2024",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "opens": "10:30",
+      "closes": "20:00",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"]
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "opens": "10:30",
+      "closes": "16:00",
+      "dayOfWeek": ["Friday"]
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "opens": "12:30",
+      "closes": "16:00",
+      "dayOfWeek": ["Saturday", "Sunday"]
+    }
+  ]
+}
