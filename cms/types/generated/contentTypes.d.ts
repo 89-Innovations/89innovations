@@ -649,6 +649,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'layout.showcase',
         'ui.link',
         'layout.service',
+        'layout.content',
       ]
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;

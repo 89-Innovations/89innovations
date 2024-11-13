@@ -10,6 +10,13 @@ export default (config, { strapi }) => {
               },
             },
           },
+          'layout.content': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+            },
+          },
           'layout.cta': {
             populate: {
               link: true,

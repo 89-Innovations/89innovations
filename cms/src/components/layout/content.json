@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_layout_contents",
+  "info": {
+    "displayName": "Content",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

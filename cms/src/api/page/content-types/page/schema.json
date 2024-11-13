@@ -51,7 +51,8 @@
         "layout.testimonial",
         "layout.showcase",
         "ui.link",
-        "layout.service"
+        "layout.service",
+        "layout.content"
       ]
     }
   }

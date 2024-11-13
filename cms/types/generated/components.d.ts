@@ -147,6 +147,18 @@ export interface LayoutContact extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutContent extends Struct.ComponentSchema {
+  collectionName: 'components_layout_contents';
+  info: {
+    displayName: 'Content';
+    icon: 'alien';
+  };
+  attributes: {
+    content: Schema.Attribute.RichText & Schema.Attribute.Required;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+  };
+}
+
 export interface LayoutCta extends Struct.ComponentSchema {
   collectionName: 'components_layout_ctas';
   info: {
@@ -391,6 +403,7 @@ declare module '@strapi/strapi' {
       'data.testimonial': DataTestimonial;
       'layout.about': LayoutAbout;
       'layout.contact': LayoutContact;
+      'layout.content': LayoutContent;
       'layout.cta': LayoutCta;
       'layout.hero': LayoutHero;
       'layout.info-card': LayoutInfoCard;
