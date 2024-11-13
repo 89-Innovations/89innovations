@@ -2,6 +2,7 @@
 import Logo from '@/components/logo.astro';
 import Link from '@/components/ui/link.astro';
 import { Astronav, MenuIcon, MenuItems, StickyHeader } from 'astro-navbar';
+import Dropdown from './dropdown.astro';
 
 const pathname = Astro.url.pathname;
 const { navItems, ctaLink, logo } = Astro.props;
@@ -32,19 +33,28 @@ const { href, label, size, block, style } = ctaLink;
               path: string;
             }) => (
               <>
-                <li class='relative group'>
-                  <a
-                    href={item.path}
-                    class:list={[
-                      'flex hover:text-accent uppercase p-2 lg:p-0 font-semibold tracking-widest transition-all ease-linear',
-                      pathname === item.path
-                        ? 'underline decoration-accent decoration-2 underline-offset-4'
-                        : '',
-                    ]}
-                  >
-                    {item.title}
-                  </a>
-                </li>
+                {item.children.length > 0 && (
+                  <Dropdown
+                    title={item.title}
+                    lastItem={item === navItems[navItems.length - 1]}
+                    children={item.children}
+                  />
+                )}
+                {!item.children.length && (
+                  <li class='relative group'>
+                    <a
+                      href={item.path}
+                      class:list={[
+                        'flex hover:text-accent uppercase p-2 lg:p-0 font-semibold tracking-widest transition-all ease-linear',
+                        pathname === item.path
+                          ? 'underline decoration-accent decoration-2 underline-offset-4'
+                          : '',
+                      ]}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                )}
               </>
             )
           )

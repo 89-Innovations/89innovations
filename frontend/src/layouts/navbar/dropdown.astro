@@ -26,14 +26,14 @@ const { title, lastItem, children } = Astro.props;
     <DropdownItems>
       <div
         class:list={[
-          'lg:absolute w-full lg:w-48 z-10',
+          'lg:absolute w-full lg:w-52 z-10',
           lastItem
             ? 'lg:right-0 origin-top-right'
             : 'lg:left-0 origin-top-left',
         ]}
       >
         <div
-          class='lg:bg-white lg:rounded-md lg:shadow lg:border flex flex-col'
+          class='lg:bg-white lg:rounded-md lg:shadow lg:border-b-2 lg:border-accent flex flex-col lg:mt-2'
         >
           {
             children.map(
@@ -43,7 +43,7 @@ const { title, lastItem, children } = Astro.props;
               }) => (
                 <a
                   href={item.path}
-                  class='py-1 hover:font-semibold hover:bg-accent/40 pl-3'
+                  class='py-1.5 lg:font-medium text-primary hover:text-accent hover:bg-background pl-3'
                 >
                   {item.title}
                 </a>
