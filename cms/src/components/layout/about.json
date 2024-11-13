@@ -16,16 +16,6 @@
     },
     "about": {
       "type": "richtext"
-    },
-    "title": {
-      "type": "string",
-      "default": "title",
-      "required": true
-    },
-    "subtitle": {
-      "type": "string",
-      "default": "subtitle",
-      "required": true
     }
   }
 }

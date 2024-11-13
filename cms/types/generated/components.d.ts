@@ -129,12 +129,6 @@ export interface LayoutAbout extends Struct.ComponentSchema {
   attributes: {
     about: Schema.Attribute.RichText;
     image: Schema.Attribute.Media<'images'>;
-    subtitle: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'subtitle'>;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'title'>;
   };
 }
 
