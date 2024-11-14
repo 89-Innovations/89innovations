@@ -25,7 +25,7 @@ import ServiceIcon from './ui/service-icon.astro';
     <!-- Icon container moved outside the card div -->
     <div class='absolute -top-8 transform ml-6 z-10'>
       <span
-        class='inline-flex transition-all duration-300 rounded-xl group-hover:bg-accent bg-primary p-3 shadow-lg'
+        class='inline-flex transition-all duration-300 rounded group-hover:bg-accent bg-primary p-3 shadow-lg'
       >
         <ServiceIcon
           icon={icon}
@@ -36,7 +36,7 @@ import ServiceIcon from './ui/service-icon.astro';
 
     <!-- Card container with overflow-hidden -->
     <div
-      class='flow-root rounded-lg group-hover:bg-primary transition-all duration-300 bg-white shadow px-6 pb-8 sm:pt-16 pt-12 relative overflow-hidden'
+      class='flow-root rounded group-hover:bg-primary transition-all duration-300 bg-white shadow px-6 pb-8 sm:pt-16 pt-12 relative overflow-hidden'
     >
       <!-- Adjusted padding-top to accommodate the icon -->
       <h3
