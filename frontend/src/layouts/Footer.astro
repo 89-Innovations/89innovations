@@ -14,7 +14,7 @@ interface FooterSection {
   }[];
 }
 
-const { footer, socialMedia, companyName, address } = Astro.props;
+const { footer, socialMedia, companyName } = Astro.props;
 ---
 
 <footer
@@ -76,7 +76,7 @@ const { footer, socialMedia, companyName, address } = Astro.props;
             <FooterIcons socials={socialMedia} />
           </div>
           <!-- Business Address -->
-          <address class='not-italic text-footer-text'>
+          <!-- <address class='not-italic text-footer-text'>
             <p>{address.streetAddress}</p>
             {address.address2 && <p>{address.streetAddress2}</p>}
             <p>
@@ -85,7 +85,7 @@ const { footer, socialMedia, companyName, address } = Astro.props;
             </p>
 
             {address.phone && <p>{address.phone}</p>}
-          </address>
+          </address> -->
         </div>
       </div>
     </div>
