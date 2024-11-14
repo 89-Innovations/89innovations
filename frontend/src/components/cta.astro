@@ -8,7 +8,7 @@ const { href, isExternal, size, block, style, label } = link;
   <!-- Red section with diagonal cut -->
   <div
     class='bg-accent text-white py-14 sm:py-16
-        md:pt-40 md:pb-16 lg:pt-48 xl:pt-64 xl:pb-24 md:clip-path-custom'
+        md:pt-40 md:pb-16 lg:pt-80 xl:pb-24 md:clip-path-custom'
   >
     <div class='max-w-screen-lg mx-auto text-center'>
       <h2
@@ -24,7 +24,14 @@ const { href, isExternal, size, block, style, label } = link;
       >
         {subHeading}
       </p>
-      <Link {style} {isExternal} {block} {size} {href}>{label}</Link>
+      <Link
+        {style}
+        {isExternal}
+        {block}
+        {size}
+        {href}
+        class='hover:text-primary'>{label}</Link
+      >
     </div>
   </div>
 </div>
