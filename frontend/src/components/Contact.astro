@@ -3,7 +3,7 @@ import Button from '@/components/ui/button.astro';
 
 const { subHeading, subject, button, company } = Astro.props;
 const { label, type, style, block, size } = button;
-const { streetAddress, city, province, postal, phone, email } = company.address;
+const { city, province, country, phone, email } = company.address;
 ---
 
 <div class='max-w-screen-lg sm:mb-8 md:mb-32 mx-auto lg:px-8 px-4'>
@@ -79,7 +79,7 @@ const { streetAddress, city, province, postal, phone, email } = company.address;
                 ></path>
               </svg>
             </dt>
-            <dd>{streetAddress}<br />{city}, {province} {postal}</dd>
+            <dd>{city}, {province}, {country}</dd>
           </div>
         </dl>
       </div>
