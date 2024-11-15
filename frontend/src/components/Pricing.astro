@@ -74,7 +74,7 @@ function classNames(...classes: string[]) {
               {tier.features.map((feature) => (
                 <li
                   class={classNames(
-                    feature.available ? 'text-primary' : 'text-gray-400',
+                    feature.available ? 'text-primary' : 'text-gray-500',
                     tier.featured ? 'text-white' : '',
                     'flex gap-x-3 items-center'
                   )}
@@ -97,7 +97,7 @@ function classNames(...classes: string[]) {
                       xmlns='http://www.w3.org/2000/svg'
                       viewBox='0 0 20 20'
                       fill='currentColor'
-                      class='h-5 w-5 text-gray-400'
+                      class='h-5 w-5 text-red-600'
                     >
                       <path
                         fill-rule='evenodd'
@@ -118,7 +118,7 @@ function classNames(...classes: string[]) {
                 {tier.addOns.map((addOn) => (
                   <li
                     class={classNames(
-                      addOn.available ? 'text-primary' : 'text-gray-400',
+                      addOn.available ? 'text-primary' : 'text-gray-500',
                       tier.featured ? 'text-white' : '',
                       'flex justify-between items-center'
                     )}
@@ -142,7 +142,7 @@ function classNames(...classes: string[]) {
                           xmlns='http://www.w3.org/2000/svg'
                           viewBox='0 0 20 20'
                           fill='currentColor'
-                          class='h-5 w-5 text-gray-400'
+                          class='h-5 w-5 text-red-600'
                         >
                           <path
                             fill-rule='evenodd'
