@@ -52,7 +52,8 @@
         "layout.showcase",
         "ui.link",
         "layout.service",
-        "layout.content"
+        "layout.content",
+        "layout.pricing"
       ]
     }
   }

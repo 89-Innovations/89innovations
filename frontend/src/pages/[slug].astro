@@ -4,6 +4,7 @@ import About from '@/components/About.astro';
 import Contact from '@/components/Contact.astro';
 import Content from '@/components/Content.astro';
 import Cta from '@/components/cta.astro';
+import Pricing from '@/components/Pricing.astro';
 import Showcase from '@/components/react/Showcase';
 import Testimonials from '@/components/react/Testimonials';
 import Services from '@/components/Services.astro';
@@ -100,15 +101,12 @@ const { page } = Astro.props;
           );
         case 'layout.showcase':
           return <Showcase client:load images={block.images} />;
-        // case 'layout.service':
-        //   return (
-        //     <Services
-        //       services={block.services}
-        //       title={block.title}
-        //       subtitle={block.subtitle}
-        //       slug={page.slug ?? ''}
-        //     />
-        //   );
+        case 'layout.pricing':
+          return (
+            <Container>
+              <Pricing tiers={block.pricing_tiers} />
+            </Container>
+          );
 
         default:
           console.warn(`Unknown component type: ${block.__component}`);
