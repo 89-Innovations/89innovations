@@ -33,7 +33,8 @@
       "type": "dynamiczone",
       "components": [
         "layout.service-areas",
-        "layout.service-info"
+        "layout.service-info",
+        "layout.pricing"
       ]
     }
   }

@@ -91,6 +91,33 @@ export interface BrandSocial extends Struct.ComponentSchema {
   };
 }
 
+export interface DataAddOn extends Struct.ComponentSchema {
+  collectionName: 'components_data_add_ons';
+  info: {
+    displayName: 'Add On';
+  };
+  attributes: {
+    available: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    price: Schema.Attribute.Integer & Schema.Attribute.Required;
+  };
+}
+
+export interface DataFeature extends Struct.ComponentSchema {
+  collectionName: 'components_data_features';
+  info: {
+    displayName: 'Feature';
+  };
+  attributes: {
+    available: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface DataServiceIcon extends Struct.ComponentSchema {
   collectionName: 'components_data_service_icons';
   info: {
@@ -203,6 +230,23 @@ export interface LayoutInfoCard extends Struct.ComponentSchema {
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     icon: Schema.Attribute.Component<'data.service-icon', false>;
     link: Schema.Attribute.Component<'ui.link', false>;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface LayoutPricing extends Struct.ComponentSchema {
+  collectionName: 'components_layout_pricings';
+  info: {
+    displayName: 'Pricing';
+    icon: 'shoppingCart';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    pricing_tiers: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pricing-tier.pricing-tier'
+    >;
+    subtitle: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -399,6 +443,8 @@ declare module '@strapi/strapi' {
       'brand.global-seo': BrandGlobalSeo;
       'brand.logo': BrandLogo;
       'brand.social': BrandSocial;
+      'data.add-on': DataAddOn;
+      'data.feature': DataFeature;
       'data.service-icon': DataServiceIcon;
       'data.testimonial': DataTestimonial;
       'layout.about': LayoutAbout;
@@ -407,6 +453,7 @@ declare module '@strapi/strapi' {
       'layout.cta': LayoutCta;
       'layout.hero': LayoutHero;
       'layout.info-card': LayoutInfoCard;
+      'layout.pricing': LayoutPricing;
       'layout.service': LayoutService;
       'layout.service-areas': LayoutServiceAreas;
       'layout.service-info': LayoutServiceInfo;

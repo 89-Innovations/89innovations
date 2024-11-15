@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pricing_tiers",
+  "info": {
+    "singularName": "pricing-tier",
+    "pluralName": "pricing-tiers",
+    "displayName": "Pricing Tier",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "frequency": {
+      "type": "string",
+      "required": true,
+      "default": "/month"
+    },
+    "description": {
+      "type": "string"
+    },
+    "featured": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "features": {
+      "displayName": "Feature",
+      "type": "component",
+      "repeatable": true,
+      "component": "data.feature"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.link"
+    },
+    "addOns": {
+      "displayName": "Add On",
+      "type": "component",
+      "repeatable": true,
+      "component": "data.add-on"
+    }
+  }
+}

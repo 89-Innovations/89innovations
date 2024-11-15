@@ -563,7 +563,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
       }> &
       Schema.Attribute.DefaultTo<'description'>;
     dynamicPageSection: Schema.Attribute.DynamicZone<
-      ['layout.service-areas', 'layout.service-info']
+      ['layout.service-areas', 'layout.service-info', 'layout.pricing']
     >;
     hero: Schema.Attribute.Component<'layout.hero', false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -673,6 +673,48 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPricingTierPricingTier extends Struct.CollectionTypeSchema {
+  collectionName: 'pricing_tiers';
+  info: {
+    description: '';
+    displayName: 'Pricing Tier';
+    pluralName: 'pricing-tiers';
+    singularName: 'pricing-tier';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    addOns: Schema.Attribute.Component<'data.add-on', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    cta: Schema.Attribute.Component<'ui.link', false>;
+    description: Schema.Attribute.String;
+    featured: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    features: Schema.Attribute.Component<'data.feature', true>;
+    frequency: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'/month'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pricing-tier.pricing-tier'
+    > &
+      Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    price: Schema.Attribute.Integer & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1233,6 +1275,7 @@ declare module '@strapi/strapi' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::nav-item.nav-item': ApiNavItemNavItem;
       'api::page.page': ApiPagePage;
+      'api::pricing-tier.pricing-tier': ApiPricingTierPricingTier;
       'api::service.service': ApiServiceService;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

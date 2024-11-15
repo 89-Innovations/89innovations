@@ -39,7 +39,16 @@ const href = `/blog/${post.slug}`;
         </h2>
 
         {minutesRead && <span class='text-primary text-sm'>{minutesRead}</span>}
-        <div class='flex gap-2 mt-1 text-xs text-slate-500'>
+        <div
+          class='flex gap-2 mt-1 items-center align-middle text-xs text-slate-500'
+        >
+          <OptimizedImage
+            src={author.image.url}
+            alt={author.fullName}
+            width={30}
+            height={30}
+            class='rounded-full border-2 border-accent h-8 w-8 object-contain'
+          />
           <span>
             {author.fullName}
           </span>

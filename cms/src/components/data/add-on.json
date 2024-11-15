@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_data_add_ons",
+  "info": {
+    "displayName": "Add On"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "available": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

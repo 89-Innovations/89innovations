@@ -1,0 +1,174 @@
+---
+import Link from './ui/link.astro';
+
+const { tiers } = Astro.props;
+
+interface Tier {
+  name: string;
+  price: number;
+  frequency: string;
+  description?: string;
+  featured: boolean;
+  features: {
+    name: string;
+    available: boolean;
+  }[];
+  addOns: {
+    name: string;
+    price: number;
+    available: boolean;
+  }[];
+  cta: {
+    label: string;
+    href: string;
+    style: 'primary' | 'secondary' | 'plain' | 'animated';
+  };
+}
+
+function classNames(...classes: string[]) {
+  return classes.filter(Boolean).join(' ');
+}
+---
+
+<div
+  class='isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3'
+>
+  {
+    tiers.map((tier: Tier, tierIdx: number) => (
+      <div
+        class={classNames(
+          tier.featured
+            ? 'lg:z-10 lg:rounded-b-none bg-primary text-white'
+            : 'lg:mt-8 bg-white text-primary',
+          tierIdx === 0 ? 'lg:rounded-r-none' : '',
+          tierIdx === tiers.length - 1 ? 'lg:rounded-l-none' : '',
+          'flex flex-col justify-between rounded p-8 ring-1 ring-accent xl:p-10'
+        )}
+      >
+        <div>
+          <div class='flex items-center justify-between gap-x-4'>
+            <h3
+              class={classNames(
+                tier.featured ? 'text-white' : 'text-primary',
+                'text-4xl font-heading uppercase font-semibold'
+              )}
+            >
+              {tier.name}
+            </h3>
+            {tier.featured ? (
+              <p class='rounded bg-accent/20 px-2.5 py-1 text-xs/5 font-semibold text-accent'>
+                Most popular
+              </p>
+            ) : null}
+          </div>
+          <p class='mt-4 text-sm/6 text-gray-600'>{tier.description}</p>
+          <p class='mt-6 flex items-baseline gap-x-1'>
+            <span class='text-5xl font-semibold font-heading tracking-tight'>
+              ${tier.price}
+            </span>
+            <span class='text-sm/6 font-semibold'>{tier.frequency}</span>
+          </p>
+          <div class='flex flex-col justify-between'>
+            <!-- Features List -->
+            <ul role='list' class='mt-8 space-y-3'>
+              {tier.features.map((feature) => (
+                <li
+                  class={classNames(
+                    feature.available ? 'text-primary' : 'text-gray-400',
+                    tier.featured ? 'text-white' : '',
+                    'flex gap-x-3 items-center'
+                  )}
+                >
+                  {feature.available ? (
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 20 20'
+                      fill='currentColor'
+                      class='h-5 w-5 text-accent'
+                    >
+                      <path
+                        fill-rule='evenodd'
+                        d='M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z'
+                        clip-rule='evenodd'
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 20 20'
+                      fill='currentColor'
+                      class='h-5 w-5 text-gray-400'
+                    >
+                      <path
+                        fill-rule='evenodd'
+                        d='m5.965 4.904 9.131 9.131a6.5 6.5 0 0 0-9.131-9.131Zm8.07 10.192L4.904 5.965a6.5 6.5 0 0 0 9.131 9.131ZM4.343 4.343a8 8 0 1 1 11.314 11.314A8 8 0 0 1 4.343 4.343Z'
+                        clip-rule='evenodd'
+                      />
+                    </svg>
+                  )}
+                  <span>{feature.name}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- Add-Ons Section -->
+            <div class='mt-10'>
+              <h4 class='font-heading text-lg mb-4'>Add-Ons</h4>
+              <ul role='list' class='space-y-3'>
+                {tier.addOns.map((addOn) => (
+                  <li
+                    class={classNames(
+                      addOn.available ? 'text-primary' : 'text-gray-400',
+                      tier.featured ? 'text-white' : '',
+                      'flex justify-between items-center'
+                    )}
+                  >
+                    <div class='flex items-center gap-x-3'>
+                      {addOn.available ? (
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          viewBox='0 0 20 20'
+                          fill='currentColor'
+                          class='h-5 w-5 text-accent'
+                        >
+                          <path
+                            fill-rule='evenodd'
+                            d='M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z'
+                            clip-rule='evenodd'
+                          />
+                        </svg>
+                      ) : (
+                        <svg
+                          xmlns='http://www.w3.org/2000/svg'
+                          viewBox='0 0 20 20'
+                          fill='currentColor'
+                          class='h-5 w-5 text-gray-400'
+                        >
+                          <path
+                            fill-rule='evenodd'
+                            d='m5.965 4.904 9.131 9.131a6.5 6.5 0 0 0-9.131-9.131Zm8.07 10.192L4.904 5.965a6.5 6.5 0 0 0 9.131 9.131ZM4.343 4.343a8 8 0 1 1 11.314 11.314A8 8 0 0 1 4.343 4.343Z'
+                            clip-rule='evenodd'
+                          />
+                        </svg>
+                      )}
+                      <span>{addOn.name}</span>
+                    </div>
+                    <span class='font-semibold'>${addOn.price}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Call-to-Action Button -->
+        <Link
+          href={tier.cta.href}
+          class={`${tier.featured && 'shadow-white/30'} mt-8`}
+          style={tier.cta.style}
+        >
+          {tier.cta.label}
+        </Link>
+      </div>
+    ))
+  }
+</div>

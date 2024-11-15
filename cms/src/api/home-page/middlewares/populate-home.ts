@@ -21,6 +21,24 @@ export default (config, { strapi }) => {
               },
             },
           },
+          'layout.pricing': {
+            populate: {
+              pricing_tiers: {
+                fields: [
+                  'name',
+                  'price',
+                  'frequency',
+                  'description',
+                  'featured',
+                ],
+                populate: {
+                  features: true,
+                  addOns: true,
+                  cta: true,
+                },
+              },
+            },
+          },
         },
       },
     };

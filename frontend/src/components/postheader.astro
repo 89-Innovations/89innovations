@@ -1,6 +1,7 @@
 ---
 const { title, author, publishedAt, category, minutesRead } = Astro.props;
 import { formatDate } from '@/utils/formatDate';
+import OptimizedImage from './OptimizedImage.astro';
 
 const date = formatDate(publishedAt);
 ---
@@ -15,7 +16,17 @@ const date = formatDate(publishedAt);
     {title}
   </h1>
   <span class='text-primary'>{minutesRead}</span>
-  <div class='flex gap-2 mt-3 items-center flex-wrap md:flex-nowrap'>
+  <div
+    class='flex gap-2 mt-3 items-center align-middle flex-wrap md:flex-nowrap'
+  >
+    <OptimizedImage
+      src={author.image.url}
+      alt={author.fullName}
+      width={30}
+      height={30}
+      class='rounded-full h-12 w-12 border-2 border-accent object-contain'
+    />
+
     <span class='text-primary'>
       {author.fullName ?? 'John Doe'}
     </span>
