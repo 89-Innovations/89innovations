@@ -34,9 +34,10 @@ export default (config, { strapi }) => {
           },
           'layout.showcase': {
             populate: {
-              images: {
+              image: {
                 fields: ['url', 'alternativeText'],
               },
+              cta: true,
             },
           },
           'layout.service': {
