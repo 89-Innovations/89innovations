@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_layout_portfolios",
+  "info": {
+    "displayName": "Portfolio"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "showcase": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.showcase"
+    }
+  }
+}

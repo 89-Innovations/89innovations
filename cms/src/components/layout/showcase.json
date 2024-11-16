@@ -6,13 +6,24 @@
   },
   "options": {},
   "attributes": {
-    "images": {
+    "image": {
       "type": "media",
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images"
       ]
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.link"
+    },
+    "description": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }

@@ -39,6 +39,18 @@ export default (config, { strapi }) => {
               },
             },
           },
+          'layout.portfolio': {
+            populate: {
+              showcase: {
+                populate: {
+                  image: {
+                    fields: ['url', 'alternativeText'],
+                  },
+                  cta: true,
+                },
+              },
+            },
+          },
         },
       },
     };

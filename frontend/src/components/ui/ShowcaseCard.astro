@@ -1,0 +1,47 @@
+---
+import OptimizedImage from '../OptimizedImage.astro';
+import Link from './link.astro';
+import { styles } from '@/styles/buttonStyles';
+
+const { item } = Astro.props;
+const { name, description, image, cta } = item;
+const {
+  href,
+  isExternal,
+  label,
+  size,
+  block,
+  style,
+}: {
+  href: string;
+  isExternal: boolean;
+  label: string;
+  size: 'md' | 'lg' | 'link';
+  block: boolean;
+  style: 'primary' | 'secondary' | 'plain' | 'animated';
+} = cta;
+---
+
+<div class='group'>
+  <Link
+    {href}
+    {isExternal}
+    {size}
+    {block}
+    class='flex flex-col rounded justify-between h-full pb-4'
+  >
+    <OptimizedImage
+      src={image.url}
+      alt={image.alternativeText}
+      class='w-full h-48 lg:64 xl:h-72 2xl:h-80 md:h-64 object-cover object-center hover:scale-110 transition-transform duration-300'
+    />
+
+    <div class='p-4'>
+      <h3 class='text-2xl font-heading uppercase text-primary font-semibold'>
+        {name}
+      </h3>
+      <p class='text-secondary text-sm mt-2'>{description}</p>
+    </div>
+    <span class:list={[styles[style]]}>{label}</span>
+  </Link>
+</div>

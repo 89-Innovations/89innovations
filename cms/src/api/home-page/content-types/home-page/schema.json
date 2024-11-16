@@ -34,7 +34,8 @@
       "components": [
         "layout.service-areas",
         "layout.service-info",
-        "layout.pricing"
+        "layout.pricing",
+        "layout.portfolio"
       ]
     }
   }

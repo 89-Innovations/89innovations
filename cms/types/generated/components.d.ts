@@ -234,6 +234,19 @@ export interface LayoutInfoCard extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutPortfolio extends Struct.ComponentSchema {
+  collectionName: 'components_layout_portfolios';
+  info: {
+    displayName: 'Portfolio';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    showcase: Schema.Attribute.Component<'layout.showcase', true>;
+    subtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface LayoutPricing extends Struct.ComponentSchema {
   collectionName: 'components_layout_pricings';
   info: {
@@ -307,7 +320,10 @@ export interface LayoutShowcase extends Struct.ComponentSchema {
     displayName: 'Showcase';
   };
   attributes: {
-    images: Schema.Attribute.Media<'images', true>;
+    cta: Schema.Attribute.Component<'ui.link', false>;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    name: Schema.Attribute.String;
   };
 }
 
@@ -453,6 +469,7 @@ declare module '@strapi/strapi' {
       'layout.cta': LayoutCta;
       'layout.hero': LayoutHero;
       'layout.info-card': LayoutInfoCard;
+      'layout.portfolio': LayoutPortfolio;
       'layout.pricing': LayoutPricing;
       'layout.service': LayoutService;
       'layout.service-areas': LayoutServiceAreas;

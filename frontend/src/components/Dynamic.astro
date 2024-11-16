@@ -2,6 +2,7 @@
 import ServiceAreas from './ServiceAreas.astro';
 import Services from './Services.astro';
 import HomePricing from './HomePricing.astro';
+import Portfolio from './Portfolio.astro';
 
 const { dynamicPageSection } = Astro.props;
 ---
@@ -17,6 +18,8 @@ const { dynamicPageSection } = Astro.props;
         return <Services {block} />;
       case 'layout.pricing':
         return <HomePricing {block} />;
+      case 'layout.portfolio':
+        return <Portfolio {block} />;
 
       default:
         console.warn(`Unknown component type: ${block.__component}`);
