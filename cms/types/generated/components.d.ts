@@ -127,7 +127,7 @@ export interface DataServiceIcon extends Struct.ComponentSchema {
   };
   attributes: {
     icon: Schema.Attribute.Enumeration<
-      ['Mobile', 'Responsive', 'PageSpeed', 'Seo', 'PPC', 'Copywriting']
+      ['Mobile', 'Responsive', 'PageSpeed', 'Seo', 'PPC', 'Copywriting', 'Api']
     >;
     name: Schema.Attribute.String & Schema.Attribute.Required;
   };

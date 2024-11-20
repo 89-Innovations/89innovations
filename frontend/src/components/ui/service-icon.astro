@@ -12,6 +12,7 @@ enum IconName {
   Seo = 'Seo',
   PPC = 'PPC',
   Copywriting = 'Copywriting',
+  Api = 'Api',
 }
 
 import MobileIcon from '@/components/icons/mobile.astro';
@@ -20,6 +21,7 @@ import PageSpeedIcon from '@/components/icons/page-speed.astro';
 import SeoIcon from '@/components/icons/seo.astro';
 import PPCIcon from '@/components/icons/ppc.astro';
 import CopywritingIcon from '@/components/icons/copywriting.astro';
+import ApiIcon from '@/components/icons/api.astro';
 
 const icons = {
   [IconName.Mobile]: MobileIcon,
@@ -28,6 +30,7 @@ const icons = {
   [IconName.Seo]: SeoIcon,
   [IconName.PPC]: PPCIcon,
   [IconName.Copywriting]: CopywritingIcon,
+  [IconName.Api]: ApiIcon,
 };
 
 const IconComponent = icons[AstroIcon];
