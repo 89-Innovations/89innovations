@@ -1,0 +1,89 @@
+---
+import { Markdown } from 'astro-remote';
+import OptimizedImage from './OptimizedImage.astro';
+import ServiceIcon from './ui/service-icon.astro';
+import Link from './ui/link.astro';
+
+const { block } = Astro.props;
+interface Stat {
+  stat: string;
+  description: string;
+}
+
+const { markdown, image, stats, subheading, cta, highlights } = block as {
+  markdown: string;
+  subheading: string;
+  image: { url: string; alternativeText?: string };
+  stats: Stat[];
+  cta: {
+    href: string;
+    label: string;
+    style?: 'primary' | 'secondary' | 'animated' | 'plain';
+    size?: 'md' | 'lg';
+    block?: boolean;
+    isExternal: boolean;
+  };
+  highlights: {
+    icon: string;
+    description: string;
+  }[];
+};
+---
+
+<div class='bg-primary py-32'>
+  <div class='grid lg:grid-cols-2 px-8 gap-16 max-w-screen-2xl mx-auto'>
+    <div class='lg:max-w-screen-lg mx-auto'>
+      <div class='flex gap-4 px-8 justify-between'>
+        {
+          stats.map((stat) => (
+            <div class='text-white text-left'>
+              <h3 class='text-accent font-semibold font-heading uppercase text-7xl tracking-tight'>
+                {stat.stat}
+              </h3>
+              <p class='font-semibold text-wrap max-w-28 text-lg'>
+                {stat.description}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+      <div class='rounded mt-8 mx-auto'>
+        <OptimizedImage
+          src={image.url}
+          alt={image.alternativeText || 'Image'}
+          class='object-cover rounded'
+        />
+      </div>
+    </div>
+    <div class='lg:order-first'>
+      <p
+        class='uppercase font-bold text-accent text-opacity-100 mb-2 sm:mb-5 lg:mb-4 tracking-widest text-sm lg:text-lg xl:mb-8 xl:text-2xl fade-up opacity-0 translate-y-1/2 transition-all duration-700 ease-in-out'
+      >
+        {subheading}
+      </p>
+      <section
+        class='prose text-white prose-headings:uppercase prose-h2:text-white prose-headings:font-semibold prose-h2:tracking-tight prose-h2:text-6xl text-pretty prose-h2:font-heading prose-h2:mb-8 prose-h6:text-accent prose-headings:leading-none'
+      >
+        <Markdown content={markdown} />
+      </section>
+      <div class='mt-8'>
+        {
+          highlights.map((highlight) => (
+            <div class='flex items-center mt-6 gap-4'>
+              <ServiceIcon icon={highlight.icon} class='text-white' />
+              <p class='text-white font-semibold'>{highlight.description}</p>
+            </div>
+          ))
+        }
+      </div>
+      <Link
+        href={cta.href}
+        style={cta.style}
+        size={cta.size}
+        block={cta.block}
+        isExternal={cta.isExternal}
+        class='shadow-accent mt-8 max-w-56'>{cta.label}</Link
+      >
+    </div>
+  </div>
+</div>

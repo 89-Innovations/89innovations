@@ -2,6 +2,7 @@
 import FeaturedArticles from './FeaturedArticles.astro';
 import FeaturedOffer from './FeaturedOffer.astro';
 import HomePricing from './HomePricing.astro';
+import Performance from './Performance.astro';
 import Portfolio from './Portfolio.astro';
 import ServiceAreas from './ServiceAreas.astro';
 import Services from './Services.astro';
@@ -26,6 +27,8 @@ const { dynamicPageSection } = Astro.props;
         return <Portfolio {block} />;
       case 'layout.featured-articles':
         return <FeaturedArticles {block} />;
+      case 'layout.performance':
+        return <Performance {block} />;
 
       default:
         console.warn(`Unknown component type: ${block.__component}`);

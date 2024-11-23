@@ -7,7 +7,7 @@ const { block } = Astro.props;
 const { title, subtitle, description, pricing_tiers } = block;
 ---
 
-<Container>
+<Container class='my-16 md:my-24 lg:my-32'>
   <div class='max-w-screen-sm mx-auto'>
     <Sectionhead level='h2'>
       <Fragment slot='subtitle'>{subtitle}</Fragment>
@@ -19,7 +19,7 @@ const { title, subtitle, description, pricing_tiers } = block;
   >
     {description}
   </p>
-  <div class='my-20'>
+  <div>
     <Pricing tiers={pricing_tiers} />
   </div>
 </Container>

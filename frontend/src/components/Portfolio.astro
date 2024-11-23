@@ -9,7 +9,7 @@ const { block } = Astro.props;
 const { title, subtitle, description, showcase } = block;
 ---
 
-<Container>
+<div class='bg-white xl:py-40 py-16 md:py-24 lg:py-32'>
   <div class='max-w-screen-sm mx-auto'>
     <Sectionhead level='h2'>
       <Fragment slot='subtitle'>{subtitle}</Fragment>
@@ -22,8 +22,10 @@ const { title, subtitle, description, showcase } = block;
     {description}
   </p>
   <div class='my-20'>
-    <div class='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+    <div
+      class='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-screen-xl mx-auto'
+    >
       {showcase.map((item: any) => <ShowcaseCard item={item} />)}
     </div>
   </div>
-</Container>
+</div>

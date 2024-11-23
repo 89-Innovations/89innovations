@@ -308,6 +308,8 @@ export interface LayoutPerformance extends Struct.ComponentSchema {
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
     markdown: Schema.Attribute.RichText;
     stats: Schema.Attribute.Component<'data.stats', true>;
+    subheading: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Performance'>;
   };
 }
 

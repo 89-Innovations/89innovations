@@ -61,6 +61,20 @@ export default (config, { strapi }) => {
               },
             },
           },
+          'layout.performance': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText'],
+              },
+              stats: true,
+              cta: true,
+              highlights: {
+                populate: {
+                  icon: true,
+                },
+              },
+            },
+          },
         },
       },
     };
