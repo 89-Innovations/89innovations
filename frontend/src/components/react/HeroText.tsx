@@ -41,13 +41,13 @@ const HeroText = ({ heading, subheading, cta }: HeroTextProps) => {
 
   return (
     <motion.div
-      className='mx-auto max-w-2xl lg:mx-0 lg:flex-auto'
+      className='mx-auto max-w-2xl lg:text-left text-center lg:mx-0 lg:flex-auto'
       variants={containerVariants}
       initial='hidden'
       animate='visible'
     >
       <motion.h1
-        className='mt-10 text-pretty font-heading text-primary uppercase font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight'
+        className='mt-10 text-pretty  font-heading text-primary uppercase font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight'
         variants={itemVariants}
       >
         {heading}
@@ -59,7 +59,7 @@ const HeroText = ({ heading, subheading, cta }: HeroTextProps) => {
         {subheading}
       </motion.p>
       <motion.div
-        className='mt-10 flex items-center gap-x-6'
+        className='mt-10 mx-auto lg:mx-0 flex items-center gap-6 max-w-md flex-col sm:flex-row'
         variants={itemVariants}
       >
         {cta.map((button, index) => (
