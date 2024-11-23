@@ -209,6 +209,7 @@ export interface LayoutFeaturedOffer extends Struct.ComponentSchema {
     icon: 'bell';
   };
   attributes: {
+    cta: Schema.Attribute.Component<'ui.link', false>;
     description: Schema.Attribute.RichText;
     features: Schema.Attribute.Component<'data.feature', true>;
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;

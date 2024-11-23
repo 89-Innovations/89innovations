@@ -3,6 +3,7 @@ import ServiceAreas from './ServiceAreas.astro';
 import Services from './Services.astro';
 import HomePricing from './HomePricing.astro';
 import Portfolio from './Portfolio.astro';
+import FeaturedOffer from './FeaturedOffer.astro';
 
 const { dynamicPageSection } = Astro.props;
 ---
@@ -16,6 +17,8 @@ const { dynamicPageSection } = Astro.props;
         );
       case 'layout.service-info':
         return <Services {block} />;
+      case 'layout.featured-offer':
+        return <FeaturedOffer {block} />;
       case 'layout.pricing':
         return <HomePricing {block} />;
       case 'layout.portfolio':

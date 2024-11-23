@@ -1,0 +1,123 @@
+---
+import { fetchStrapiData } from '@/queries/strapiQueries';
+import { Markdown } from 'astro-remote';
+import OptimizedImage from './OptimizedImage.astro';
+import Sectionhead from './sectionhead.astro';
+import Link from './ui/link.astro';
+
+interface Feature {
+  title: string;
+  description: string;
+}
+
+const { block } = Astro.props;
+const { title, subtitle, description, image, features, cta } = block;
+
+const data = await fetchStrapiData('/global');
+
+const { image: logo } = data.company.logo;
+---
+
+<div class='overflow-hidden py-24 sm:py-32'>
+  <div class='mx-auto max-w-7xl px-6 lg:px-8'>
+    <div
+      class='mx-auto grid max-w-2xl grid-cols-1 gap-x-2 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2'
+    >
+      <div class='lg:ml-auto lg:pl-4 lg:pt-4'>
+        <div class='lg:max-w-screen-md'>
+          <Sectionhead level='h3' align='left' class='text-pretty'>
+            <Fragment slot='title'>{title}</Fragment>
+            <Fragment slot='subtitle'>{subtitle}</Fragment>
+          </Sectionhead>
+          <section class='prose text-secondary'>
+            <Markdown content={description} />
+          </section>
+          <dl class='grid grid-cols-1 gap-x-8 gap-y-6 mt-8 sm:grid-cols-2'>
+            {
+              features.map((feature: Feature) => (
+                <div>
+                  <dt>
+                    <div class='flex items-center space-x-1'>
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke-width='1.5'
+                        stroke='currentColor'
+                        class='size-8 text-accent'
+                      >
+                        <path
+                          stroke-linecap='round'
+                          stroke-linejoin='round'
+                          d='M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z'
+                        />
+                      </svg>
+
+                      <h3 class='uppercase font-semibold font-heading tracking-tight text-xl text-primary'>
+                        {feature.title}
+                      </h3>
+                    </div>
+                  </dt>
+                  <dd class='mt-1 text-sm text-pretty text-secondary'>
+                    {feature.description}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+        <div class='mt-8 lg:pr-8 lg:w-1/2'>
+          <Link
+            href={cta.href}
+            style={cta.style}
+            block={cta.block}
+            size={cta.size}
+            isExternal={cta.isExternal}
+          >
+            {cta.label}
+          </Link>
+        </div>
+      </div>
+      <!-- Parent div remains unchanged -->
+      <div class='flex items-start lg:mt-16 xl:mt-20 lg:order-first'>
+        <!-- Wrapper div for the image and badge -->
+        <div class='relative inline-block'>
+          <!-- Image -->
+          <OptimizedImage
+            src={image.url}
+            alt={image.alternativeText}
+            class='w-[48rem] lg:rounded-s-3xl lg:rounded-e rounded shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem] lg:-ml-16'
+          />
+          <div
+            class='absolute lg:rounded-s-3xl lg:rounded-e rounded bottom-0 bg-accent/15 h-full w-full lg:right-16'
+          >
+          </div>
+
+          <!-- Badge -->
+          <div
+            class='absolute bottom-4 right-4 lg:right-20 bg-white backdrop-blur-sm rounded p-4'
+          >
+            <div class='flex items-center justify-between space-x-2'>
+              <div class='leading-none'>
+                <p
+                  class='font-heading text-primary -mb-2 font-semibold text-lg tracking-tight uppercase'
+                >
+                  {image.alternativeText}
+                </p>
+                <span class='text-accent font-semibold text-xs'>
+                  {image.caption}
+                </span>
+              </div>
+
+              <OptimizedImage
+                src={logo.url}
+                alt={logo.alternativeText}
+                class='w-16 h-auto'
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

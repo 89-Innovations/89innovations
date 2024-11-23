@@ -21,6 +21,15 @@ export default (config, { strapi }) => {
               },
             },
           },
+          'layout.featured-offer': {
+            populate: {
+              image: {
+                fields: ['url', 'alternativeText', 'caption'],
+              },
+              features: true,
+              cta: true,
+            },
+          },
           'layout.pricing': {
             populate: {
               pricing_tiers: {

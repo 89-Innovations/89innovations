@@ -47,7 +47,7 @@ const HeroText = ({ heading, subheading, cta }: HeroTextProps) => {
       animate='visible'
     >
       <motion.h1
-        className='mt-10 text-pretty  font-heading text-primary uppercase font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight'
+        className='mt-10 text-pretty font-heading text-primary uppercase font-bold text-3xl sm:text-5xl lg:text-6xl tracking-tight'
         variants={itemVariants}
       >
         {heading}
