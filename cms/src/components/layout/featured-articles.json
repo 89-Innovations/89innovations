@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_layout_featured_articles",
+  "info": {
+    "displayName": "Featured Articles",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtitle": {
+      "type": "string",
+      "required": true
+    },
+    "limit": {
+      "type": "integer",
+      "required": true,
+      "default": 3
+    }
+  }
+}

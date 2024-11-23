@@ -13,6 +13,7 @@ enum IconName {
   PPC = 'PPC',
   Copywriting = 'Copywriting',
   Api = 'Api',
+  Hourglass = 'Hourglass',
 }
 
 import MobileIcon from '@/components/icons/mobile.astro';
@@ -22,6 +23,7 @@ import SeoIcon from '@/components/icons/seo.astro';
 import PPCIcon from '@/components/icons/ppc.astro';
 import CopywritingIcon from '@/components/icons/copywriting.astro';
 import ApiIcon from '@/components/icons/api.astro';
+import HourglassIcon from '@/components/icons/hourglass.astro';
 
 const icons = {
   [IconName.Mobile]: MobileIcon,
@@ -31,6 +33,7 @@ const icons = {
   [IconName.PPC]: PPCIcon,
   [IconName.Copywriting]: CopywritingIcon,
   [IconName.Api]: ApiIcon,
+  [IconName.Hourglass]: HourglassIcon,
 };
 
 const IconComponent = icons[AstroIcon];

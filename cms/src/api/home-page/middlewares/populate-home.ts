@@ -30,6 +30,7 @@ export default (config, { strapi }) => {
               cta: true,
             },
           },
+          'layout.featured-articles': true,
           'layout.pricing': {
             populate: {
               pricing_tiers: {

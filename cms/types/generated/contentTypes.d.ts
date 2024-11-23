@@ -569,6 +569,8 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         'layout.pricing',
         'layout.portfolio',
         'layout.featured-offer',
+        'layout.featured-articles',
+        'layout.performance',
       ]
     >;
     hero: Schema.Attribute.Component<'layout.hero', false>;

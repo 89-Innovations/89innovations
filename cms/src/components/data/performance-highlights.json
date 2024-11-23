@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_data_performance_highlights",
+  "info": {
+    "displayName": "Performance Highlights"
+  },
+  "options": {},
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "component",
+      "repeatable": false,
+      "component": "data.service-icon"
+    }
+  }
+}

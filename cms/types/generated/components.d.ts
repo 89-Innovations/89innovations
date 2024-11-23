@@ -117,6 +117,17 @@ export interface DataFeature extends Struct.ComponentSchema {
   };
 }
 
+export interface DataPerformanceHighlights extends Struct.ComponentSchema {
+  collectionName: 'components_data_performance_highlights';
+  info: {
+    displayName: 'Performance Highlights';
+  };
+  attributes: {
+    description: Schema.Attribute.String;
+    icon: Schema.Attribute.Component<'data.service-icon', false>;
+  };
+}
+
 export interface DataServiceIcon extends Struct.ComponentSchema {
   collectionName: 'components_data_service_icons';
   info: {
@@ -126,9 +137,29 @@ export interface DataServiceIcon extends Struct.ComponentSchema {
   };
   attributes: {
     icon: Schema.Attribute.Enumeration<
-      ['Mobile', 'Responsive', 'PageSpeed', 'Seo', 'PPC', 'Copywriting', 'Api']
+      [
+        'Mobile',
+        'Responsive',
+        'PageSpeed',
+        'Seo',
+        'PPC',
+        'Copywriting',
+        'Api',
+        'Hourglass',
+      ]
     >;
     name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface DataStats extends Struct.ComponentSchema {
+  collectionName: 'components_data_stats';
+  info: {
+    displayName: 'Stats';
+  };
+  attributes: {
+    description: Schema.Attribute.String & Schema.Attribute.Required;
+    stat: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -201,6 +232,21 @@ export interface LayoutCta extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutFeaturedArticles extends Struct.ComponentSchema {
+  collectionName: 'components_layout_featured_articles';
+  info: {
+    description: '';
+    displayName: 'Featured Articles';
+  };
+  attributes: {
+    limit: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<3>;
+    subtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface LayoutFeaturedOffer extends Struct.ComponentSchema {
   collectionName: 'components_layout_featured_offers';
   info: {
@@ -247,6 +293,21 @@ export interface LayoutInfoCard extends Struct.ComponentSchema {
     icon: Schema.Attribute.Component<'data.service-icon', false>;
     link: Schema.Attribute.Component<'ui.link', false>;
     title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface LayoutPerformance extends Struct.ComponentSchema {
+  collectionName: 'components_layout_performances';
+  info: {
+    description: '';
+    displayName: 'Performance';
+  };
+  attributes: {
+    cta: Schema.Attribute.Component<'ui.link', false>;
+    highlights: Schema.Attribute.Component<'data.performance-highlights', true>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    markdown: Schema.Attribute.RichText;
+    stats: Schema.Attribute.Component<'data.stats', true>;
   };
 }
 
@@ -490,15 +551,19 @@ declare module '@strapi/strapi' {
       'brand.social': BrandSocial;
       'data.add-on': DataAddOn;
       'data.feature': DataFeature;
+      'data.performance-highlights': DataPerformanceHighlights;
       'data.service-icon': DataServiceIcon;
+      'data.stats': DataStats;
       'data.testimonial': DataTestimonial;
       'layout.about': LayoutAbout;
       'layout.contact': LayoutContact;
       'layout.content': LayoutContent;
       'layout.cta': LayoutCta;
+      'layout.featured-articles': LayoutFeaturedArticles;
       'layout.featured-offer': LayoutFeaturedOffer;
       'layout.hero': LayoutHero;
       'layout.info-card': LayoutInfoCard;
+      'layout.performance': LayoutPerformance;
       'layout.portfolio': LayoutPortfolio;
       'layout.pricing': LayoutPricing;
       'layout.service': LayoutService;

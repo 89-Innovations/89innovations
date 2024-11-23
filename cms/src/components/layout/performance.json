@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_layout_performances",
+  "info": {
+    "displayName": "Performance",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "markdown": {
+      "type": "richtext"
+    },
+    "stats": {
+      "displayName": "Stats",
+      "type": "component",
+      "repeatable": true,
+      "component": "data.stats"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "ui.link"
+    },
+    "highlights": {
+      "displayName": "Performance Highlights",
+      "type": "component",
+      "repeatable": true,
+      "component": "data.performance-highlights"
+    }
+  }
+}
