@@ -1,17 +1,17 @@
 {
   "collectionName": "components_data_features",
   "info": {
-    "displayName": "Feature"
+    "displayName": "Feature",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "available": {
-      "type": "boolean",
-      "default": true,
+    "description": {
+      "type": "text",
       "required": true
     }
   }

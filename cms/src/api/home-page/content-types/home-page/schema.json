@@ -35,7 +35,8 @@
         "layout.service-areas",
         "layout.service-info",
         "layout.pricing",
-        "layout.portfolio"
+        "layout.portfolio",
+        "layout.featured-offer"
       ]
     }
   }

@@ -34,12 +34,6 @@
       "default": false,
       "required": true
     },
-    "features": {
-      "displayName": "Feature",
-      "type": "component",
-      "repeatable": true,
-      "component": "data.feature"
-    },
     "cta": {
       "type": "component",
       "repeatable": false,
@@ -50,6 +44,11 @@
       "type": "component",
       "repeatable": true,
       "component": "data.add-on"
+    },
+    "features": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pricing.pricing-feature"
     }
   }
 }

@@ -568,6 +568,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
         'layout.service-info',
         'layout.pricing',
         'layout.portfolio',
+        'layout.featured-offer',
       ]
     >;
     hero: Schema.Attribute.Component<'layout.hero', false>;
@@ -706,7 +707,7 @@ export interface ApiPricingTierPricingTier extends Struct.CollectionTypeSchema {
     featured: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
-    features: Schema.Attribute.Component<'data.feature', true>;
+    features: Schema.Attribute.Component<'pricing.pricing-feature', true>;
     frequency: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'/month'>;

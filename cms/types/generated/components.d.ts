@@ -108,13 +108,12 @@ export interface DataAddOn extends Struct.ComponentSchema {
 export interface DataFeature extends Struct.ComponentSchema {
   collectionName: 'components_data_features';
   info: {
+    description: '';
     displayName: 'Feature';
   };
   attributes: {
-    available: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>;
-    name: Schema.Attribute.String & Schema.Attribute.Required;
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -199,6 +198,22 @@ export interface LayoutCta extends Struct.ComponentSchema {
     link: Schema.Attribute.Component<'ui.link', false>;
     subHeading: Schema.Attribute.Text &
       Schema.Attribute.DefaultTo<"Have a project in mind? Let's talk about it. We are here to help you with your construction needs. ">;
+  };
+}
+
+export interface LayoutFeaturedOffer extends Struct.ComponentSchema {
+  collectionName: 'components_layout_featured_offers';
+  info: {
+    description: '';
+    displayName: 'Featured Offer';
+    icon: 'bell';
+  };
+  attributes: {
+    description: Schema.Attribute.RichText;
+    features: Schema.Attribute.Component<'data.feature', true>;
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    subtitle: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -347,6 +362,19 @@ export interface LayoutTestimonial extends Struct.ComponentSchema {
   };
 }
 
+export interface PricingPricingFeature extends Struct.ComponentSchema {
+  collectionName: 'components_pricing_pricing_features';
+  info: {
+    displayName: 'Pricing Feature';
+  };
+  attributes: {
+    available: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface UiButton extends Struct.ComponentSchema {
   collectionName: 'components_ui_buttons';
   info: {
@@ -467,6 +495,7 @@ declare module '@strapi/strapi' {
       'layout.contact': LayoutContact;
       'layout.content': LayoutContent;
       'layout.cta': LayoutCta;
+      'layout.featured-offer': LayoutFeaturedOffer;
       'layout.hero': LayoutHero;
       'layout.info-card': LayoutInfoCard;
       'layout.portfolio': LayoutPortfolio;
@@ -476,6 +505,7 @@ declare module '@strapi/strapi' {
       'layout.service-info': LayoutServiceInfo;
       'layout.showcase': LayoutShowcase;
       'layout.testimonial': LayoutTestimonial;
+      'pricing.pricing-feature': PricingPricingFeature;
       'ui.button': UiButton;
       'ui.cta': UiCta;
       'ui.footer': UiFooter;
