@@ -10,19 +10,6 @@ const { title, description, hero, about, services, cta, dynamicPageSection } =
 ---
 
 <MainLayout title={`89Innovations | ${title}`} description={description}>
-  <!-- <pre>{JSON.stringify(data,null,2)}</pre> -->
   <Hero hero={hero} />
-  <!-- <Services
-    services={services.services}
-    title={services.title}
-    subtitle={services.subtitle}
-  />
-  <Cta heading={cta.heading} subHeading={cta.subHeading} link={cta.link} />
-  <About
-    about={about.about}
-    image={about.image}
-    title={about.title}
-    subtitle={about.subtitle}
-  /> -->
   <Dynamic {dynamicPageSection} />
 </MainLayout>
