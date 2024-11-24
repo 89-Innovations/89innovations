@@ -4,11 +4,11 @@ import Sectionhead from './sectionhead.astro';
 import Pricing from './Pricing.astro';
 
 const { block } = Astro.props;
-const { title, subtitle, description, pricing_tiers } = block;
+const { title, subtitle, description, pricing_tiers, bundles } = block;
 ---
 
 <Container class='my-16 md:my-24 lg:my-32'>
-  <div class='max-w-screen-sm mx-auto'>
+  <div class='max-w-screen-lg mx-auto'>
     <Sectionhead level='h2'>
       <Fragment slot='subtitle'>{subtitle}</Fragment>
       <Fragment slot='title'>{title}</Fragment>
@@ -20,6 +20,6 @@ const { title, subtitle, description, pricing_tiers } = block;
     {description}
   </p>
   <div>
-    <Pricing tiers={pricing_tiers} />
+    <Pricing tiers={pricing_tiers} bundles={bundles ?? {}} />
   </div>
 </Container>

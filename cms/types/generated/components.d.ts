@@ -329,10 +329,12 @@ export interface LayoutPortfolio extends Struct.ComponentSchema {
 export interface LayoutPricing extends Struct.ComponentSchema {
   collectionName: 'components_layout_pricings';
   info: {
+    description: '';
     displayName: 'Pricing';
     icon: 'shoppingCart';
   };
   attributes: {
+    bundles: Schema.Attribute.Component<'ui.cta', false>;
     description: Schema.Attribute.Text;
     pricing_tiers: Schema.Attribute.Relation<
       'oneToMany',

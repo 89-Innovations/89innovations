@@ -69,6 +69,11 @@ export default (config, { strapi }) => {
                   cta: true,
                 },
               },
+              bundles: {
+                populate: {
+                  link: true,
+                },
+              },
             },
           },
         },

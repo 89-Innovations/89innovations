@@ -96,6 +96,7 @@ const { page } = Astro.props;
                 client:load
                 testimonials={block.testimonial}
                 numberOfColumns={block.numberOfColumns}
+                description={page.description}
               />
             </Container>
           );
@@ -103,7 +104,10 @@ const { page } = Astro.props;
         case 'layout.pricing':
           return (
             <Container>
-              <Pricing tiers={block.pricing_tiers} />
+              <Pricing
+                tiers={block.pricing_tiers}
+                bundles={block.bundles ?? {}}
+              />
             </Container>
           );
 
