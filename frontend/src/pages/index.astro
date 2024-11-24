@@ -5,8 +5,7 @@ import MainLayout from '@/layouts/MainLayout.astro';
 import { fetchStrapiData } from '@/queries/strapiQueries';
 
 const data = await fetchStrapiData('/home-page');
-const { title, description, hero, about, services, cta, dynamicPageSection } =
-  data;
+const { title, description, hero, dynamicPageSection } = data;
 ---
 
 <MainLayout title={`89Innovations | ${title}`} description={description}>
