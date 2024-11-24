@@ -232,6 +232,19 @@ export interface LayoutCta extends Struct.ComponentSchema {
   };
 }
 
+export interface LayoutFaq extends Struct.ComponentSchema {
+  collectionName: 'components_layout_faqs';
+  info: {
+    displayName: 'FAQ';
+  };
+  attributes: {
+    faq_categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::faq-category.faq-category'
+    >;
+  };
+}
+
 export interface LayoutFeaturedArticles extends Struct.ComponentSchema {
   collectionName: 'components_layout_featured_articles';
   info: {
@@ -563,6 +576,7 @@ declare module '@strapi/strapi' {
       'layout.contact': LayoutContact;
       'layout.content': LayoutContent;
       'layout.cta': LayoutCta;
+      'layout.faq': LayoutFaq;
       'layout.featured-articles': LayoutFeaturedArticles;
       'layout.featured-offer': LayoutFeaturedOffer;
       'layout.hero': LayoutHero;

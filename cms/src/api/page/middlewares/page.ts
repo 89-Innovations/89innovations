@@ -76,6 +76,18 @@ export default (config, { strapi }) => {
               },
             },
           },
+          'layout.faq': {
+            populate: {
+              faq_categories: {
+                fields: ['name', 'slug'],
+                populate: {
+                  faqs: {
+                    fields: ['question', 'answer'],
+                  },
+                },
+              },
+            },
+          },
         },
       },
     };

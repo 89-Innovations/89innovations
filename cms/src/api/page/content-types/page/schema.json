@@ -53,7 +53,8 @@
         "ui.link",
         "layout.service",
         "layout.content",
-        "layout.pricing"
+        "layout.pricing",
+        "layout.faq"
       ]
     }
   }

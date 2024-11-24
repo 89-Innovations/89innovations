@@ -32,3 +32,20 @@ export interface Service {
   };
   description: string;
 }
+
+export interface FAQ {
+  id: number;
+  question: string;
+  answer: string;
+}
+
+export interface FAQs {
+  id: number;
+  name: string;
+  slug: string;
+  faqs: FAQ[];
+}
+
+export interface FaqSectionProps {
+  faqCategories: FAQs[];
+}
