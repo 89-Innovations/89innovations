@@ -11,7 +11,7 @@ import remarkGfm from 'remark-gfm';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://89innovstions.com',
+  site: 'https://89innovations.com',
   integrations: [react(), tailwind(), sitemap(), robotsTxt(), icon(), mdx()],
   markdown: {
     remarkPlugins: [remarkGfm],
