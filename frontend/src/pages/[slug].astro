@@ -116,7 +116,7 @@ const { page } = Astro.props;
         case 'layout.faq':
           return (
             <Container>
-              <FaqSection client:visible faqCategories={block.faq_categories} />
+              <FaqSection client:load faqCategories={block.faq_categories} />
             </Container>
           );
 
