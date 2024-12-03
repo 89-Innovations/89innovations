@@ -7,13 +7,17 @@ import Dropdown from './dropdown.astro';
 const pathname = Astro.url.pathname;
 const { navItems, ctaLink, logo } = Astro.props;
 const { href, label, size, block, style } = ctaLink;
+
+const scrollY = 50;
+const defaultClass = 'border-transparent';
+const activeClass = 'bg-white/80 border-gray-200 backdrop-blur-lg';
 ---
 
 <StickyHeader
-  class='mx-auto px-4 lg:px-8 sticky top-0 border-b z-20 transition-all flex flex-col lg:flex-row justify-between items-center xl:px-32'
-  scrollY={50}
-  defaultClass='py-5 border-transparent'
-  activeClass='py-5 bg-white/80 border-gray-200 backgrop-blur-lg'
+  class='mx-auto py-5 px-4 lg:px-8 sticky top-0 border-b z-20 transition-all flex flex-col lg:flex-row justify-between items-center xl:px-32'
+  scrollY={scrollY}
+  defaultClass={defaultClass}
+  activeClass={activeClass}
 >
   <Astronav>
     <div class='flex w-full lg:w-auto items-center justify-between'>
@@ -84,3 +88,38 @@ const { href, label, size, block, style } = ctaLink;
     </Link>
   </div>
 </StickyHeader>
+
+<script
+  data-astro-rerun
+  is:inline
+  define:vars={{ scrollY, activeClass, defaultClass }}
+>
+  const header = document.querySelector('header');
+
+  function onScroll() {
+    if (window.scrollY > scrollY) {
+      header.classList.add(...activeClass.split(' '));
+      header.classList.remove(...defaultClass.split(' '));
+    } else {
+      header.classList.remove(...activeClass.split(' '));
+      header.classList.add(...defaultClass.split(' '));
+    }
+  }
+
+  function initializeStickyHeader() {
+    window.addEventListener('scroll', onScroll);
+  }
+
+  function cleanupStickyHeader() {
+    window.removeEventListener('scroll', onScroll);
+  }
+
+  // Initialize on page load
+  initializeStickyHeader();
+
+  // Cleanup on navigation
+  document.addEventListener('astro:before-swap', cleanupStickyHeader);
+
+  // Reinitialize on navigation
+  document.addEventListener('astro:after-swap', initializeStickyHeader);
+</script>
