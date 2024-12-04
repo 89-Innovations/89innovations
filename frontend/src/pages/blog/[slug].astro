@@ -49,7 +49,7 @@ const { title, description, author, content, image, publishedAt } = post.data;
   </div>
   <PostHeader {title} {description} {publishedAt} {author} {minutesRead} />
   <article
-    class='mx-auto md:prose-lg mt-6 max-w-screen-lg prose prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent transition mb-8 sm:mb-16 lg:mb-24'
+    class='mx-auto md:prose-lg mt-6 max-w-screen-lg prose prose-a:text-accent prose-a:no-underline hover:prose-a:text-accent transition mb-8 sm:mb-16 lg:mb-24 lg:prose-h1:text-6xl prose-headings:font-heading leading-8 text-secondary prose-headings:uppercase'
   >
     <Markdown content={content} />
   </article>
