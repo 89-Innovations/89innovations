@@ -6,19 +6,17 @@ const { block } = Astro.props;
 const { title, subtitle, description, showcase } = block;
 ---
 
-<div class='bg-white xl:py-40 py-16 md:py-24 lg:py-32 px-6 lg:px-8'>
+<div class='bg-white xl:py-40 py-16 md:py-24 lg:py-32 lg:px-8'>
   <div class='max-w-screen-sm mx-auto'>
     <Sectionhead level='h2'>
       <Fragment slot='subtitle'>{subtitle}</Fragment>
       <Fragment slot='title'>{title}</Fragment>
     </Sectionhead>
   </div>
-  <p
-    class='max-w-screen-md text-secondary mt-4 mx-auto text-justify sm:text-center'
-  >
+  <p class='max-w-screen-md px-4 text-secondary mt-4 mx-auto sm:text-center'>
     {description}
   </p>
-  <div class='my-20'>
+  <div class='sm:my-20 my-10'>
     <div
       class='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-screen-xl mx-auto'
     >
