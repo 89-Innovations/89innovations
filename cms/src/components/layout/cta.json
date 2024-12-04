@@ -14,7 +14,7 @@
     "subHeading": {
       "type": "text",
       "required": false,
-      "default": "Have a project in mind? Let's talk about it. We are here to help you with your construction needs. "
+      "default": "Have a project in mind? Let's talk about it. We are here to help you with your business needs."
     },
     "link": {
       "type": "component",

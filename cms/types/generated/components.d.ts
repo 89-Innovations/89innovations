@@ -228,7 +228,7 @@ export interface LayoutCta extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'Contact'>;
     link: Schema.Attribute.Component<'ui.link', false>;
     subHeading: Schema.Attribute.Text &
-      Schema.Attribute.DefaultTo<"Have a project in mind? Let's talk about it. We are here to help you with your construction needs. ">;
+      Schema.Attribute.DefaultTo<"Have a project in mind? Let's talk about it. We are here to help you with your business needs.">;
   };
 }
 
