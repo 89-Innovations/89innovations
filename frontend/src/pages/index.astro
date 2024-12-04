@@ -8,7 +8,7 @@ const data = await fetchStrapiData('/home-page');
 const { title, description, hero, dynamicPageSection } = data;
 ---
 
-<MainLayout title={`89Innovations | ${title}`} description={description}>
+<MainLayout title={title} description={description}>
   <Hero hero={hero} />
   <Dynamic {dynamicPageSection} />
 </MainLayout>
