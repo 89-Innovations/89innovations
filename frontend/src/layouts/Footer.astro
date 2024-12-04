@@ -91,9 +91,12 @@ const { footer, socialMedia, companyName } = Astro.props;
     </div>
   </Container>
   <Container>
-    <p class='mt-4 text-sm text-footer-text md:order-1 md:mt-0'>
+    <p
+      class='flex flex-col mt-4 text-sm text-footer-text text-center md:order-1 md:mt-0'
+    >
       &copy; {new Date().getFullYear()}
       {companyName} All rights reserved.
+      <span class='mt-2 text-lg lg:text-2xl'>🖤🦈</span>
     </p>
   </Container>
 </footer>
