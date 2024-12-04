@@ -18,8 +18,8 @@ const href = `/blog/${post.slug}`;
       <OptimizedImage
         src={image.url}
         alt={image.alternativeText || ''}
-        width={300}
-        height={150}
+        width={75}
+        height={25}
         loading={index <= 2 ? 'eager' : 'lazy'}
         decoding={index <= 2 ? 'sync' : 'async'}
         class='bg-background p-2 object-contain w-full'
