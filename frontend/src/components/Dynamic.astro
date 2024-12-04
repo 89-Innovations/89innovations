@@ -1,4 +1,5 @@
 ---
+import Cta from './cta.astro';
 import FeaturedArticles from './FeaturedArticles.astro';
 import FeaturedOffer from './FeaturedOffer.astro';
 import HomePricing from './HomePricing.astro';
@@ -29,6 +30,14 @@ const { dynamicPageSection } = Astro.props;
         return <FeaturedArticles {block} />;
       case 'layout.performance':
         return <Performance {block} />;
+      case 'layout.cta':
+        return (
+          <Cta
+            heading={block.heading}
+            subHeading={block.subHeading}
+            link={block.link}
+          />
+        );
 
       default:
         console.warn(`Unknown component type: ${block.__component}`);

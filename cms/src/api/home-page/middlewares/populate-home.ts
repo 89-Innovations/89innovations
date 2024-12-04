@@ -80,6 +80,11 @@ export default (config, { strapi }) => {
               },
             },
           },
+          'layout.cta': {
+            populate: {
+              link: true,
+            },
+          },
         },
       },
     };
