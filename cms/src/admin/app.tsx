@@ -14,7 +14,7 @@ export default {
         'Auth.form.welcome.title': '89 Innovations',
         'Auth.form.welcome.subtitle': 'Log in to your account',
         'app.components.HomePage.welcomeBlock.content.again':
-          'If you run into issues, please contact us at info@kellenbolger.ca',
+          'If you run into issues, please contact us at info@89innovations.com',
       },
     },
     tutorials: false,
