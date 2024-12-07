@@ -11,10 +11,10 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.4.2",
-    "@strapi/plugin-users-permissions": "5.4.2",
+    "@strapi/plugin-cloud": "5.5.0",
+    "@strapi/plugin-users-permissions": "5.5.0",
     "@strapi/provider-upload-cloudinary": "^5.1.1",
-    "@strapi/strapi": "5.4.2",
+    "@strapi/strapi": "5.5.0",
     "better-sqlite3": "11.3.0",
     "get-strapi-schema": "^0.0.3",
     "pg": "^8.13.1",
