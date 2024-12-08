@@ -27,7 +27,7 @@ const activeClass = 'bg-white/80 border-gray-200 backdrop-blur-lg';
       </div>
     </div>
 
-    <MenuItems class='hidden w-full lg:w-auto mt-2 lg:flex'>
+    <MenuItems class='hidden w-full lg:w-auto mt-2 lg:flex lg:gap-8'>
       <ul class='flex flex-col lg:items-center lg:flex-row lg:gap-8'>
         {
           navItems.map(
@@ -75,18 +75,18 @@ const activeClass = 'bg-white/80 border-gray-200 backdrop-blur-lg';
           {label}
         </Link>
       </div>
+      <div class='hidden lg:flex items-center'>
+        <Link
+          href={href}
+          size={size}
+          style={style}
+          class='flex gap-1 items-center justify-center'
+        >
+          {label}
+        </Link>
+      </div>
     </MenuItems>
   </Astronav>
-  <div class='hidden lg:flex items-center'>
-    <Link
-      href={href}
-      size={size}
-      style={style}
-      class='flex gap-1 items-center justify-center'
-    >
-      {label}
-    </Link>
-  </div>
 </StickyHeader>
 
 <script

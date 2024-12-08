@@ -17,7 +17,7 @@ export default {
         primary: '#001F3F',
         secondary: '#4b5563',
         accent: '#43b7ff',
-        background: '#F6F6F6',
+        background: '#F9FAFB',
         border: '#001F3F',
         'footer-text': '#FFFFFF',
         'footer-border': '#FFFFFF',
