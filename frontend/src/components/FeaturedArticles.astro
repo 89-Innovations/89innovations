@@ -25,7 +25,7 @@ const formattedPosts: CollectionEntry<'articles'>[] = formatBlogPosts(
   </Sectionhead>
 
   <ul
-    class='max-w-screen-sm px-8 mx-auto md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl grid mt-8 lg:mt-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
+    class='max-w-screen-sm px-4 sm:px-8 mx-auto md:max-w-screen-xl grid mt-8 lg:mt-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
   >
     {formattedPosts.map((post, index) => <Blogcard post={post.data} {index} />)}
   </ul>
